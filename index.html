@@ -9,9 +9,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ============================================================
-           ESTILOS GLOBALES (Half-Life / noventeros)
-           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -62,9 +59,6 @@
             z-index: 1;
         }
 
-        /* ============================================================
-           HEADER Y NAV
-           ============================================================ */
         .header {
             display: flex;
             flex-direction: column;
@@ -184,9 +178,6 @@
             color: #ffaa33;
         }
 
-        /* ============================================================
-           SECCIONES GENERALES
-           ============================================================ */
         section {
             scroll-margin-top: 20px;
             margin-bottom: 3rem;
@@ -239,9 +230,6 @@
             text-shadow: 0 0 10px #ffaa33;
         }
 
-        /* ============================================================
-           PROMOCIONES
-           ============================================================ */
         .promo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -308,9 +296,6 @@
             border: 1px solid #00ff88;
         }
 
-        /* ============================================================
-           POR QUÉ ELEGIRNOS
-           ============================================================ */
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -351,9 +336,6 @@
             line-height: 1.5;
         }
 
-        /* ============================================================
-           TESTIMONIOS
-           ============================================================ */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -400,9 +382,6 @@
             text-align: right;
         }
 
-        /* ============================================================
-           PREGUNTAS FRECUENTES
-           ============================================================ */
         .faq-item {
             background: rgba(0, 20, 0, 0.15);
             border: 1px solid #2d5a27;
@@ -460,9 +439,6 @@
             transform: rotate(180deg);
         }
 
-        /* ============================================================
-           TABLA DE PRECIOS
-           ============================================================ */
         .table-wrapper {
             overflow-x: auto;
             border: 2px solid #2d5a27;
@@ -532,9 +508,6 @@
             letter-spacing: 1px;
         }
 
-        /* ============================================================
-           CONTACTO
-           ============================================================ */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -583,9 +556,6 @@
             text-decoration: underline;
         }
 
-        /* ============================================================
-           FOOTER
-           ============================================================ */
         .footer-hl {
             margin-top: 2.5rem;
             padding-top: 1.5rem;
@@ -615,9 +585,6 @@
             margin-top: 8px;
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
         @media (max-width: 600px) {
             .logo {
                 font-size: 2.2rem;
@@ -661,7 +628,6 @@
 <body>
 
     <div class="hl-container">
-        <!-- ==================== HEADER ==================== -->
         <header class="header">
             <div class="logo">XD REPARACIONES</div>
             <div class="subtag">
@@ -678,7 +644,6 @@
             </div>
         </header>
 
-        <!-- ==================== NAVEGACIÓN ==================== -->
         <nav class="nav-hl">
             <a href="#que-es"><i class="fas fa-question-circle"></i> Qué es</a>
             <a href="#promociones"><i class="fas fa-gift"></i> Promos</a>
@@ -689,7 +654,6 @@
             <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
         </nav>
 
-        <!-- ==================== QUÉ ES ==================== -->
         <section id="que-es">
             <h2 class="section-title"><i class="fas fa-question-circle"></i> ¿QUÉ ES XD REPARACIONES?</h2>
             <div class="section-content">
@@ -713,7 +677,6 @@
             </div>
         </section>
 
-        <!-- ==================== PROMOCIONES ==================== -->
         <section id="promociones">
             <h2 class="section-title"><i class="fas fa-gift"></i> PROMOCIONES</h2>
             <div class="promo-grid">
@@ -744,7 +707,6 @@
             </div>
         </section>
 
-        <!-- ==================== POR QUÉ ELEGIRNOS ==================== -->
         <section id="por-que">
             <h2 class="section-title"><i class="fas fa-lightbulb"></i> ¿POR QUÉ ELEGIRNOS?</h2>
             <div class="why-grid">
@@ -781,7 +743,6 @@
             </div>
         </section>
 
-        <!-- ==================== TESTIMONIOS ==================== -->
         <section id="testimonios">
             <h2 class="section-title"><i class="fas fa-comment"></i> TESTIMONIOS</h2>
             <div class="testimonial-grid">
@@ -800,7 +761,6 @@
             </div>
         </section>
 
-        <!-- ==================== TABLA DE PRECIOS ==================== -->
         <section id="precios">
             <h2 class="section-title"><i class="fas fa-tags"></i> LISTA DE PRECIOS</h2>
             <div class="table-wrapper">
@@ -876,7 +836,6 @@
             </div>
         </section>
 
-        <!-- ==================== PREGUNTAS FRECUENTES ==================== -->
         <section id="faq">
             <h2 class="section-title"><i class="fas fa-question"></i> PREGUNTAS FRECUENTES</h2>
             <div class="faq-item">
@@ -917,7 +876,6 @@
             </div>
         </section>
 
-        <!-- ==================== CONTACTO ==================== -->
         <section id="contacto">
             <h2 class="section-title"><i class="fas fa-envelope"></i> CONTACTO</h2>
             <div class="contact-grid">
@@ -961,7 +919,6 @@
         </footer>
     </div>
 
-    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
         // Reloj
         function updateClock() {
