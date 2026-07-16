@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>XD Reparaciones · 90s Tech</title>
+    <title>Anjeig Services · Reparaciones 90s</title>
+    
+    <!-- ========== FAVICON PERSONALIZADO ========== -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace' font-weight='bold' fill='%2366ffcc'>A</text></svg>">
+    
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts (pixelada y mono) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         /* ================================================================
@@ -155,7 +159,7 @@
         }
 
         /* ================================================================
-           HERRAMIENTAS TI (reemplaza GIFs)
+           HERRAMIENTAS TI
            ================================================================ */
         .tools-section {
             display: grid;
@@ -425,7 +429,7 @@
         }
 
         /* ================================================================
-           CONTACTO
+           CONTACTO (sin mapa, con correo y datos extras)
            ================================================================ */
         .contact-grid {
             display: grid;
@@ -446,14 +450,47 @@
             color: var(--text-title);
         }
 
-        .contact-map {
+        .contact-info-block {
             background: var(--bg-card);
             border: 3px inset var(--border-color);
-            padding: 14px;
-            text-align: center;
+            padding: 16px;
             transition: background 0.3s, border-color 0.3s;
         }
-        .contact-map i { font-size: 3rem; color: var(--text-title); }
+        .contact-info-block h4 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.75rem;
+            color: var(--text-title);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contact-info-block h4 i { color: var(--text-accent); }
+        .contact-info-block p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .btn-email {
+            display: inline-block;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            background: var(--bg-nav);
+            color: var(--text-title);
+            border: 3px solid var(--border-color);
+            border-style: outset;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: 0.1s;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+        .btn-email:hover {
+            border-style: inset;
+            background: var(--bg-card);
+        }
+        .btn-email i { margin-right: 8px; }
 
         /* ================================================================
            RELOJ
@@ -499,16 +536,116 @@
             display: inline-block;
         }
 
-        .visitor-counter {
+        /* ================================================================
+           CHATBOT
+           ================================================================ */
+        .chatbot-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .chatbot-toggle {
+            background: var(--text-title);
+            color: var(--bg-primary);
+            border: 3px solid var(--border-color);
+            border-style: outset;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            border-style: inset;
+        }
+
+        .chatbot-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            max-height: 440px;
+            background: var(--bg-secondary);
+            border: 3px solid var(--border-color);
+            border-style: ridge;
+            padding: 12px;
+            box-shadow: 8px 8px 0 var(--shadow-dark);
+            overflow-y: auto;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .chatbot-window.open {
+            display: block;
+        }
+        .chatbot-window .chat-header {
             font-family: 'Press Start 2P', monospace;
-            font-size: 0.8rem;
-            background: var(--bg-input);
-            padding: 4px 12px;
-            display: inline-block;
-            border: 2px inset var(--border-color);
+            font-size: 0.75rem;
             color: var(--text-title);
-            margin-top: 6px;
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-window .chat-header .close-btn {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        .chatbot-window .chat-header .close-btn:hover { color: var(--text-accent); }
+
+        .chatbot-window .chat-messages {
+            max-height: 280px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding-right: 4px;
+        }
+        .chatbot-window .chat-messages .msg {
+            font-size: 0.75rem;
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            background: var(--bg-card);
+            border-left: 3px solid var(--text-title);
+            color: var(--text-primary);
+        }
+        .chatbot-window .chat-messages .msg.bot {
+            background: var(--bg-nav);
+        }
+        .chatbot-window .chat-messages .msg.user {
+            background: var(--bg-card);
+            border-left-color: var(--text-accent);
+        }
+
+        .chatbot-window .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .chatbot-window .chat-options button {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.65rem;
+            background: var(--bg-nav);
+            color: var(--text-primary);
+            border: 2px solid var(--border-light);
+            padding: 4px 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.1s;
+            border-style: outset;
+        }
+        .chatbot-window .chat-options button:hover {
+            background: var(--bg-card);
+            border-style: inset;
         }
 
         /* ================================================================
@@ -542,6 +679,7 @@
             .section-title { font-size: 1rem; }
             .pricing-table { font-size: 0.65rem; min-width: 400px; }
             .container { padding: 0.8rem 1rem; }
+            .chatbot-window { width: 280px; right: -10px; }
         }
 
         @media (max-width: 480px) {
@@ -552,6 +690,7 @@
             .section-title { font-size: 0.85rem; }
             .container { padding: 0.5rem 0.6rem; }
             .promo-grid { grid-template-columns: 1fr; }
+            .chatbot-window { width: 240px; right: -5px; }
         }
 
         @media (min-width: 1400px) {
@@ -571,13 +710,13 @@
     ============================================================ -->
     <header class="header">
         <div class="logo">
-            <h1>XD<span>·</span>Rep</h1>
+            <h1>Anjeig<span>·</span>Services</h1>
             <p><i class="fas fa-microchip"></i> reparaciones 90s tech</p>
         </div>
         <div class="header-info">
             <i class="fas fa-phone"></i> +56 9 1234 5678
             <span style="opacity:0.4;">|</span>
-            <i class="fas fa-envelope"></i> xd@retro.cl
+            <i class="fas fa-envelope"></i> info@anjeig.cl
             <span style="opacity:0.4;">|</span>
             <span class="clock-display" id="clockDisplay"><i class="far fa-clock"></i> 00:00:00</span>
             <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
@@ -587,7 +726,7 @@
     </header>
 
     <!-- ============================================================
-    HERRAMIENTAS TI (test de velocidad + verificador de servicios)
+    HERRAMIENTAS TI
     ============================================================ -->
     <div class="tools-section">
         <!-- Test de velocidad -->
@@ -762,17 +901,28 @@
         <div class="contact-grid">
             <div>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i> +56 9 1234 5678</div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> xd.reparaciones@retro.cl</div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> info@anjeig.cl</div>
                 <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Sector 7G, Calle Lambda 404</div>
                 <div class="contact-item"><i class="fas fa-clock"></i> Lun-Vie 09-20 · Sáb 10-18</div>
                 <div class="contact-item" style="margin-top:10px;"><i class="fas fa-whatsapp" style="color:#25D366;"></i> WhatsApp: +56 9 8765 4321</div>
-            </div>
-            <div class="contact-map">
-                <i class="fas fa-map"></i>
-                <div style="background:var(--bg-input); padding:8px; border:2px inset var(--border-color); margin-top:8px;">
-                    <span style="color:var(--text-title);">📍 Estamos aquí</span>
+
+                <div style="margin-top:16px;">
+                    <a href="mailto:info@anjeig.cl?subject=Consulta%20desde%20Anjeig%20Services&body=Hola,%20quiero%20solicitar%20información%20sobre..." 
+                       class="btn-email"><i class="fas fa-envelope"></i> Enviar correo</a>
+                    <span style="font-size:0.6rem; color:var(--text-muted); margin-left:10px;">(Outlook, Gmail, etc.)</span>
                 </div>
-                <p style="font-size:0.65rem; margin-top:6px; color:var(--text-muted);">Encuéntranos en Google Maps.</p>
+            </div>
+
+            <div class="contact-info-block">
+                <h4><i class="fas fa-credit-card"></i> Medios de pago</h4>
+                <p><i class="fas fa-check-circle" style="color:var(--text-title);"></i> Efectivo / Transferencia</p>
+                <p><i class="fas fa-check-circle" style="color:var(--text-title);"></i> Tarjetas de crédito/débito</p>
+                <p><i class="fas fa-check-circle" style="color:var(--text-title);"></i> Mercado Pago / PayPal</p>
+                <hr style="border-color:var(--border-light); margin:8px 0;">
+                <h4 style="margin-top:6px;"><i class="fas fa-clock"></i> Horario detallado</h4>
+                <p>Lunes a Viernes: 09:00 – 20:00</p>
+                <p>Sábados: 10:00 – 18:00</p>
+                <p>Domingos: Cerrado (solo emergencias)</p>
             </div>
         </div>
     </section>
@@ -787,18 +937,40 @@
             <a href="#" target="_blank" aria-label="Dev.to"><i class="fab fa-dev"></i></a>
             <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="visitor-counter">
-            <i class="fas fa-eye"></i> VISITAS: 001337
-        </div>
         <p style="font-size:0.55rem; margin-top:6px; opacity:0.6;">
-            <i class="fas fa-copyright"></i> 1998–2026 · XD Reparaciones · Hecho con <i class="fas fa-heart" style="color:#ff4466;"></i> y código de los 90s.
+            <i class="fas fa-copyright"></i> 1998–2026 · Anjeig Services · Hecho con <i class="fas fa-heart" style="color:#ff4466;"></i> y código de los 90s.
         </p>
     </footer>
 
 </div>
 
 <!-- ============================================================
-JAVASCRIPT (reloj, tema, herramientas TI)
+CHATBOT
+============================================================ -->
+<div class="chatbot-container">
+    <button class="chatbot-toggle" id="chatToggleBtn" aria-label="Ayuda">
+        <i class="fas fa-robot"></i>
+    </button>
+    <div class="chatbot-window" id="chatWindow">
+        <div class="chat-header">
+            <span><i class="fas fa-comment-dots"></i> Asistente Anjeig</span>
+            <span class="close-btn" id="chatCloseBtn">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">🤖 ¡Hola! Soy el asistente de Anjeig Services. ¿En qué puedo ayudarte?</div>
+        </div>
+        <div class="chat-options" id="chatOptions">
+            <button data-question="servicios">📋 Lista de servicios</button>
+            <button data-question="precios">💰 Precios y presupuestos</button>
+            <button data-question="garantia">🛡️ Garantía</button>
+            <button data-question="horario">🕒 Horario de atención</button>
+            <button data-question="domicilio">🏠 Servicio a domicilio</button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+JAVASCRIPT
 ============================================================ -->
 <script>
     (function() {
@@ -861,7 +1033,7 @@ JAVASCRIPT (reloj, tema, herramientas TI)
         // HERRAMIENTAS TI
         // ================================================================
 
-        // --- TEST DE VELOCIDAD (descarga + ping) ---
+        // --- TEST DE VELOCIDAD ---
         const speedBtn = document.getElementById('btnSpeedTest');
         const speedResult = document.getElementById('speedResult');
 
@@ -870,14 +1042,12 @@ JAVASCRIPT (reloj, tema, herramientas TI)
             this.disabled = true;
 
             try {
-                // 1. Ping (medir tiempo de respuesta HTTP)
                 const pingStart = performance.now();
                 await fetch('https://www.google.com', { mode: 'no-cors', cache: 'no-store' });
                 const pingEnd = performance.now();
                 const pingMs = (pingEnd - pingStart).toFixed(0);
 
-                // 2. Descarga (usar archivo de prueba de Cloudflare)
-                const downloadUrl = 'https://speed.cloudflare.com/__down?bytes=1000000'; // 1MB
+                const downloadUrl = 'https://speed.cloudflare.com/__down?bytes=1000000';
                 const downloadStart = performance.now();
                 const response = await fetch(downloadUrl, { cache: 'no-store' });
                 const data = await response.arrayBuffer();
@@ -953,8 +1123,50 @@ JAVASCRIPT (reloj, tema, herramientas TI)
             });
         });
 
-        // Verificar automáticamente al cargar
         setTimeout(checkAllServices, 500);
+
+        // ================================================================
+        // CHATBOT
+        // ================================================================
+        const chatToggleBtn = document.getElementById('chatToggleBtn');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatCloseBtn = document.getElementById('chatCloseBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatOptions = document.getElementById('chatOptions');
+
+        chatToggleBtn.addEventListener('click', function() {
+            chatWindow.classList.toggle('open');
+        });
+        chatCloseBtn.addEventListener('click', function() {
+            chatWindow.classList.remove('open');
+        });
+
+        const responses = {
+            'servicios': '📋 Ofrecemos: diagnóstico, formateo, respaldo de datos, recuperación, soporte de impresoras, limpieza y mantención, e instalación de software. Revisa la tabla de precios para más detalles.',
+            'precios': '💰 Nuestros precios van desde $15.000 hasta $120.000 según el servicio. Puedes ver la tabla completa en la sección "Servicios". Ofrecemos presupuestos sin compromiso.',
+            'garantia': '🛡️ Todos nuestros servicios tienen garantía de 90 días. Si algo falla dentro de ese período, lo reparamos sin costo adicional (términos y condiciones aplican).',
+            'horario': '🕒 Atención de lunes a viernes de 09:00 a 20:00, y sábados de 10:00 a 18:00. Domingos cerrado (solo emergencias).',
+            'domicilio': '🏠 Sí, ofrecemos servicio a domicilio sin costo adicional dentro de la ciudad. Contáctanos para coordinar una visita.'
+        };
+
+        chatOptions.addEventListener('click', function(e) {
+            const target = e.target.closest('button');
+            if (!target) return;
+            const question = target.dataset.question;
+            if (!question) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'msg user';
+            userMsg.textContent = target.textContent.trim();
+            chatMessages.appendChild(userMsg);
+
+            const botMsg = document.createElement('div');
+            botMsg.className = 'msg bot';
+            botMsg.textContent = responses[question] || '🤔 Lo siento, no tengo una respuesta para eso. Escríbenos un correo y te atenderemos personalmente.';
+            chatMessages.appendChild(botMsg);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
 
     })();
 </script>
