@@ -1,58 +1,20 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Anjeig Services · Reparaciones 90s</title>
-    
-    <!-- ========== FAVICON PERSONALIZADO ========== -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace' font-weight='bold' fill='%2366ffcc'>A</text></svg>">
-    
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anjeig · IT Services</title>
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 (gratis) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
     <style>
-        /* ================================================================
-           VARIABLES CSS (modo oscuro / claro)
-           ================================================================ */
-        :root {
-            --bg-primary: #1a1a2e;
-            --bg-secondary: #0f0f1f;
-            --bg-card: #141e2a;
-            --bg-nav: #1a2a3a;
-            --bg-table: #0f1a22;
-            --bg-input: #0a0a12;
-            --text-primary: #b0c0d0;
-            --text-title: #66ffcc;
-            --text-accent: #ffaa33;
-            --text-muted: #8a9aaa;
-            --border-color: #3a4a5a;
-            --border-light: #2a3a4a;
-            --shadow-dark: #0a0a12;
-            --shadow-light: #5a6a7a;
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f0f4f8;
-            --bg-secondary: #d8e2ed;
-            --bg-card: #e8eef4;
-            --bg-nav: #c8d8e8;
-            --bg-table: #e0e8f0;
-            --bg-input: #f4f8fc;
-            --text-primary: #1a2a3a;
-            --text-title: #0066cc;
-            --text-accent: #cc6600;
-            --text-muted: #4a5a6a;
-            --border-color: #8a9aaa;
-            --border-light: #b0c0d0;
-            --shadow-dark: #b0c0d0;
-            --shadow-light: #f0f4f8;
-        }
-
-        /* ================================================================
-           ESTILOS GLOBALES
-           ================================================================ */
+        /* ---------- RESET & BASE ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -60,1025 +22,1597 @@
         }
 
         body {
-            font-family: 'Share Tech Mono', 'Courier New', monospace;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            padding: 12px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background 0.3s, color 0.3s;
+            font-family: 'Inter', sans-serif;
+            background: #0B0F1A;
+            color: #E8ECEF;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
-            max-width: 1100px;
-            width: 100%;
-            background: var(--bg-secondary);
-            border: 4px solid var(--border-color);
-            border-style: outset;
-            box-shadow: 8px 8px 0 var(--shadow-dark), -2px -2px 0 var(--shadow-light);
-            padding: 1.2rem 1.5rem 1rem 1.5rem;
-            position: relative;
-            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .container::before {
+        /* ---------- SCROLLBAR ---------- */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A3A52;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3D5A7A;
+        }
+
+        /* ---------- GLOW & GRADIENT UTILS ---------- */
+        .gradient-text {
+            background: linear-gradient(135deg, #64B5F6, #42A5F5, #7C4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow-box {
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.08);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .glow-box:hover {
+            box-shadow: 0 0 60px rgba(66, 165, 245, 0.18);
+            transform: translateY(-4px);
+        }
+
+        /* ---------- HEADER / NAV ---------- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 26, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 14px 0;
+            transition: background 0.3s;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: #42A5F5;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #64B5F6, #7C4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #A0B4CC;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(30,40,60,0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(30,40,60,0.08) 1px, transparent 1px);
-            background-size: 20px 20px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .container > * { position: relative; z-index: 1; }
-
-        /* ================================================================
-           HEADER
-           ================================================================ */
-        .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px double var(--border-color);
-            padding-bottom: 12px;
-            margin-bottom: 16px;
-            transition: border-color 0.3s;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #42A5F5, #7C4DFF);
+            transition: width 0.3s;
         }
 
-        .logo h1 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 2.2rem;
-            color: var(--text-title);
-            text-shadow: 0 0 10px var(--text-title), 0 0 20px color-mix(in srgb, var(--text-title) 50%, transparent);
-            letter-spacing: 2px;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-        .logo h1 span { color: var(--text-accent); }
-        .logo p {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
+        .nav-links a:hover {
+            color: #fff;
         }
 
-        .header-info {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            background: var(--bg-nav);
-            padding: 6px 14px;
-            border: 2px inset var(--border-color);
-            font-size: 0.75rem;
-            color: var(--text-primary);
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
-        }
-        .header-info i { color: var(--text-title); margin-right: 4px; }
-
-        .theme-toggle {
-            background: var(--bg-nav);
-            border: 2px solid var(--border-color);
-            border-style: outset;
-            color: var(--text-title);
-            padding: 4px 12px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Share Tech Mono', monospace;
-        }
-        .theme-toggle:hover {
-            border-style: inset;
-            background: var(--bg-card);
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        /* ================================================================
-           GUÍA DE MANTENIMIENTO Y SEGURIDAD (reemplaza herramientas TI)
-           ================================================================ */
-        .guide-section {
+        .nav-cta {
+            background: linear-gradient(135deg, #42A5F5, #7C4DFF);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #fff !important;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 140px 0 80px;
+            background: radial-gradient(ellipse at 20% 30%, rgba(66, 165, 245, 0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(124, 77, 255, 0.06) 0%, transparent 50%),
+                #0B0F1A;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 16px 0 20px 0;
-        }
-        @media (max-width: 768px) {
-            .guide-section {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .guide-card {
-            background: var(--bg-card);
-            border: 3px solid var(--border-color);
-            border-style: ridge;
-            padding: 16px;
-            transition: background 0.3s, border-color 0.3s;
-        }
-        .guide-card h3 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.8rem;
-            color: var(--text-title);
-            margin-bottom: 8px;
-            display: flex;
+            gap: 60px;
             align-items: center;
-            gap: 8px;
-        }
-        .guide-card h3 i { color: var(--text-accent); }
-        .guide-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .guide-card ul li {
-            font-size: 0.8rem;
-            color: var(--text-primary);
-            padding: 4px 0;
-            border-bottom: 1px solid var(--border-light);
-            display: flex;
-            gap: 8px;
-            align-items: flex-start;
-        }
-        .guide-card ul li:last-child {
-            border-bottom: none;
-        }
-        .guide-card ul li i {
-            color: var(--text-title);
-            margin-top: 2px;
-            min-width: 18px;
-        }
-        .guide-card .info-box {
-            background: var(--bg-input);
-            border: 2px inset var(--border-color);
-            padding: 10px 12px;
-            margin-top: 8px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            line-height: 1.5;
         }
 
-        /* ================================================================
-           NAV
-           ================================================================ */
-        .nav {
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #64B5F6, #42A5F5, #7C4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #A0B4CC;
+            max-width: 500px;
+            margin-bottom: 32px;
+        }
+
+        .hero-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px 14px;
-            margin: 12px 0 16px 0;
-            padding: 6px 0;
-            border-top: 2px solid var(--border-light);
-            border-bottom: 2px solid var(--border-light);
-            transition: border-color 0.3s;
+            gap: 16px 28px;
+            margin-bottom: 36px;
         }
 
-        .nav a {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.65rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 6px 14px;
-            background: var(--bg-nav);
-            border: 3px solid var(--border-color);
-            border-style: outset;
-            transition: 0.1s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .nav a:hover {
-            background: var(--bg-card);
-            border-style: inset;
-            color: var(--text-title);
-        }
-        .nav a i { margin-right: 6px; color: var(--text-accent); }
-
-        /* ================================================================
-           SECCIONES
-           ================================================================ */
-        .section {
-            margin-bottom: 20px;
-            padding: 10px 4px;
-            border-bottom: 1px dashed var(--border-light);
-            transition: border-color 0.3s;
-        }
-        .section:last-of-type { border-bottom: none; }
-
-        .section-title {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 1.2rem;
-            color: var(--text-title);
-            text-shadow: 0 0 8px color-mix(in srgb, var(--text-title) 50%, transparent);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        .hero-badges span {
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: color 0.3s, text-shadow 0.3s;
+            font-size: 0.95rem;
+            color: #C8D6E5;
         }
-        .section-title i { color: var(--text-accent); font-size: 1.4rem; }
+
+        .hero-badges i {
+            color: #42A5F5;
+            font-size: 1.1rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #42A5F5, #7C4DFF);
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff;
+            transition: opacity 0.2s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #E8ECEF;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.20);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .hero-stats .stat {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-stats .stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #64B5F6;
+        }
+
+        .hero-stats .stat .label {
+            font-size: 0.8rem;
+            color: #8899B0;
+            margin-top: 4px;
+        }
+
+        /* ---------- INFO BANNER (reloj + contacto) ---------- */
+        .info-bar {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 16px 0;
+            font-size: 0.9rem;
+            color: #A0B4CC;
+        }
+
+        .info-bar .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px 20px;
+        }
+
+        .info-bar .left {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px 30px;
+        }
+
+        .info-bar .left i {
+            color: #42A5F5;
+            width: 20px;
+            text-align: center;
+        }
+
+        .info-bar .right {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px 24px;
+        }
+
+        .info-bar .right a {
+            color: #E8ECEF;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .info-bar .right a:hover {
+            color: #64B5F6;
+        }
+
+        .clock {
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+            color: #64B5F6;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- SECTION TITLES ---------- */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #42A5F5;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
 
         .section-sub {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #A0B4CC;
+            max-width: 640px;
         }
 
-        /* ================================================================
-           TABLA DE PRECIOS (actualizada)
-           ================================================================ */
-        .table-wrapper {
+        /* ---------- SERVICE CARDS ---------- */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 28px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(66, 165, 245, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .service-card .icon {
+            font-size: 2rem;
+            color: #42A5F5;
+            margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .service-card .price {
+            font-size: 0.9rem;
+            color: #64B5F6;
+            font-weight: 500;
+            margin: 8px 0 12px;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: #A0B4CC;
+            margin-bottom: 14px;
+        }
+
+        .service-card .tag {
+            display: inline-block;
+            background: rgba(66, 165, 245, 0.12);
+            color: #64B5F6;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- PRICING TABLE ---------- */
+        .pricing-wrap {
             overflow-x: auto;
-            border: 3px solid var(--border-light);
-            background: var(--bg-table);
-            padding: 4px;
-            transition: background 0.3s, border-color 0.3s;
+            margin-top: 32px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.75rem;
-            font-family: 'Share Tech Mono', monospace;
-            min-width: 500px;
+            font-size: 0.92rem;
+            min-width: 560px;
         }
 
         .pricing-table th {
-            background: var(--bg-nav);
-            color: var(--text-title);
-            padding: 8px 6px;
-            border: 2px solid var(--border-light);
             text-align: left;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            transition: background 0.3s, color 0.3s;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            font-weight: 600;
+            color: #C8D6E5;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .pricing-table td {
-            padding: 8px 6px;
-            border: 1px solid var(--border-light);
-            color: var(--text-primary);
-            transition: background 0.3s, color 0.3s;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: #E8ECEF;
         }
 
-        .pricing-table tr:nth-child(even) td { background: color-mix(in srgb, var(--bg-table) 80%, black); }
-        .pricing-table tr:hover td { background: var(--bg-nav); }
-
-        .service-name { font-weight: bold; color: var(--text-accent); }
-        .price { color: var(--text-title); font-weight: bold; }
-        .type {
-            font-size: 0.6rem;
-            background: var(--bg-nav);
-            padding: 2px 10px;
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            display: inline-block;
-            color: var(--text-muted);
+        .pricing-table tr:last-child td {
+            border-bottom: none;
         }
 
-        /* ================================================================
-           VENTAJAS
-           ================================================================ */
-        .advantages {
+        .pricing-table .modalidad {
+            font-size: 0.8rem;
+            color: #8899B0;
+        }
+
+        .pricing-table .price-range {
+            font-weight: 600;
+            color: #64B5F6;
+            white-space: nowrap;
+        }
+
+        /* ---------- FEATURES / POR QUÉ ---------- */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
         }
-        .advantage-item {
-            background: var(--bg-card);
-            padding: 12px 8px;
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 24px 20px;
             text-align: center;
-            border: 3px solid var(--border-color);
-            border-style: outset;
-            transition: 0.1s, background 0.3s, border-color 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.3s;
         }
-        .advantage-item:hover {
-            border-style: inset;
-            background: var(--bg-nav);
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
         }
-        .advantage-item i {
+
+        .feature-item .icon {
             font-size: 2rem;
-            color: var(--text-title);
-            display: block;
-            margin-bottom: 4px;
-            transition: color 0.3s;
+            color: #42A5F5;
+            margin-bottom: 12px;
         }
-        .advantage-item h4 {
-            font-size: 0.7rem;
-            color: var(--text-accent);
-            font-family: 'Press Start 2P', monospace;
+
+        .feature-item h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: #8899B0;
+        }
+
+        /* ---------- CURIOSIDADES ---------- */
+        .curiosity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .curiosity-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 24px 20px;
+            border-left: 3px solid #42A5F5;
+            transition: background 0.3s;
+        }
+
+        .curiosity-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .curiosity-card .year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #42A5F5;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .advantage-item p {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            margin-top: 2px;
+
+        .curiosity-card p {
+            font-size: 0.95rem;
+            margin-top: 4px;
+            color: #C8D6E5;
         }
 
-        /* ================================================================
-           PROMOCIONES
-           ================================================================ */
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-        }
-        .promo-banner {
-            background: var(--bg-card);
-            padding: 14px 12px;
-            border: 4px solid var(--border-color);
-            border-style: ridge;
-            text-align: center;
-            color: var(--text-primary);
-            transition: background 0.3s, border-color 0.3s, color 0.3s;
-        }
-        .promo-banner .promo-text {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--text-title);
-        }
-        .promo-banner .promo-code {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.7rem;
-            background: var(--bg-secondary);
-            color: var(--text-accent);
-            padding: 4px 12px;
-            border: 2px dashed var(--text-accent);
-            display: inline-block;
-            margin-top: 6px;
-        }
-
-        /* ================================================================
-           CONTACTO
-           ================================================================ */
+        /* ---------- CONTACT / FOOTER ---------- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 40px;
+            margin-top: 32px;
         }
-        .contact-item {
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-info p {
+            color: #A0B4CC;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.8rem;
-            margin-bottom: 6px;
-            color: var(--text-primary);
-            transition: color 0.3s;
-        }
-        .contact-item i {
-            width: 28px;
-            color: var(--text-title);
+            gap: 14px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
         }
 
-        .contact-info-block {
-            background: var(--bg-card);
-            border: 3px inset var(--border-color);
-            padding: 16px;
-            transition: background 0.3s, border-color 0.3s;
+        .contact-detail i {
+            width: 24px;
+            color: #42A5F5;
+            font-size: 1.1rem;
         }
-        .contact-info-block h4 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.75rem;
-            color: var(--text-title);
-            margin-bottom: 8px;
+
+        .contact-detail a {
+            color: #E8ECEF;
+            transition: color 0.2s;
+        }
+
+        .contact-detail a:hover {
+            color: #64B5F6;
+        }
+
+        .contact-detail .label {
+            color: #8899B0;
+            font-weight: 500;
+            min-width: 80px;
+        }
+
+        .payment-methods {
             display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .contact-info-block h4 i { color: var(--text-accent); }
-        .contact-info-block p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .btn-email {
-            display: inline-block;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.6rem;
-            background: var(--bg-nav);
-            color: var(--text-title);
-            border: 3px solid var(--border-color);
-            border-style: outset;
-            padding: 8px 18px;
-            cursor: pointer;
-            transition: 0.1s;
-            text-decoration: none;
-            margin-top: 8px;
-        }
-        .btn-email:hover {
-            border-style: inset;
-            background: var(--bg-card);
-        }
-        .btn-email i { margin-right: 8px; }
-
-        /* ================================================================
-           RELOJ
-           ================================================================ */
-        .clock-display {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.8rem;
-            color: var(--text-title);
-            background: var(--bg-input);
-            padding: 2px 10px;
-            border: 2px inset var(--border-color);
-            display: inline-block;
-        }
-
-        /* ================================================================
-           FOOTER
-           ================================================================ */
-        .footer {
-            margin-top: 16px;
-            padding-top: 12px;
-            border-top: 3px double var(--border-color);
-            text-align: center;
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            transition: border-color 0.3s, color 0.3s;
-        }
-        .footer .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            margin: 8px 0 6px 0;
             flex-wrap: wrap;
-        }
-        .footer .social-links a {
-            color: var(--text-title);
-            font-size: 1.6rem;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .footer .social-links a:hover {
-            color: var(--text-accent);
-            transform: scale(1.2);
-            display: inline-block;
+            gap: 12px;
+            margin-top: 16px;
         }
 
-        /* ================================================================
-           CHATBOT
-           ================================================================ */
-        .chatbot-container {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 999;
-            font-family: 'Share Tech Mono', monospace;
-        }
-        .chatbot-toggle {
-            background: var(--text-title);
-            color: var(--bg-primary);
-            border: 3px solid var(--border-color);
-            border-style: outset;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            border-style: inset;
+        .payment-methods span {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #C8D6E5;
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .chatbot-window {
-            display: none;
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 320px;
-            max-height: 440px;
-            background: var(--bg-secondary);
-            border: 3px solid var(--border-color);
-            border-style: ridge;
-            padding: 12px;
-            box-shadow: 8px 8px 0 var(--shadow-dark);
-            overflow-y: auto;
-            transition: background 0.3s, border-color 0.3s;
+        .hours-box {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .chatbot-window.open {
-            display: block;
+
+        .hours-box h4 {
+            font-weight: 600;
+            margin-bottom: 12px;
         }
-        .chatbot-window .chat-header {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.75rem;
-            color: var(--text-title);
-            border-bottom: 2px solid var(--border-light);
-            padding-bottom: 6px;
-            margin-bottom: 10px;
+
+        .hours-box .day {
             display: flex;
             justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.9rem;
+        }
+
+        .hours-box .day:last-child {
+            border-bottom: none;
+        }
+
+        .hours-box .day .time {
+            color: #A0B4CC;
+        }
+
+        .hours-box .closed {
+            color: #f06292;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
+            font-size: 0.85rem;
+            color: #8899B0;
         }
-        .chatbot-window .chat-header .close-btn {
+
+        .footer-bottom .socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-bottom .socials a {
+            color: #8899B0;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom .socials a:hover {
+            color: #E8ECEF;
+        }
+
+        /* ---------- CHAT BOT (flotante) ---------- */
+        .chat-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            background: linear-gradient(135deg, #42A5F5, #7C4DFF);
+            border: none;
+            border-radius: 60px;
+            padding: 16px 24px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(66, 165, 245, 0.35);
             cursor: pointer;
-            color: var(--text-muted);
-            font-size: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Inter', sans-serif;
         }
-        .chatbot-window .chat-header .close-btn:hover { color: var(--text-accent); }
 
-        .chatbot-window .chat-messages {
-            max-height: 280px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            padding-right: 4px;
+        .chat-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(66, 165, 245, 0.45);
         }
-        .chatbot-window .chat-messages .msg {
+
+        .chat-btn i {
+            font-size: 1.4rem;
+        }
+
+        /* Ventana del chat */
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 28px;
+            z-index: 998;
+            width: 380px;
+            max-width: calc(100vw - 48px);
+            background: #151E2D;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+            animation: slideUp 0.25s ease;
+        }
+
+        .chat-window.open {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .chat-header {
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-header .left i {
+            font-size: 1.6rem;
+            color: #42A5F5;
+        }
+
+        .chat-header .left div {
+            font-weight: 600;
+        }
+
+        .chat-header .left span {
             font-size: 0.75rem;
-            padding: 6px 10px;
-            margin-bottom: 6px;
-            border-radius: 6px;
-            background: var(--bg-card);
-            border-left: 3px solid var(--text-title);
-            color: var(--text-primary);
-        }
-        .chatbot-window .chat-messages .msg.bot {
-            background: var(--bg-nav);
-        }
-        .chatbot-window .chat-messages .msg.user {
-            background: var(--bg-card);
-            border-left-color: var(--text-accent);
+            color: #8899B0;
+            display: block;
         }
 
-        .chatbot-window .chat-options {
+        .chat-header .close {
+            background: none;
+            border: none;
+            color: #8899B0;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .chat-header .close:hover {
+            color: #fff;
+        }
+
+        .chat-body {
+            padding: 20px;
+            max-height: 340px;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-        }
-        .chatbot-window .chat-options button {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.65rem;
-            background: var(--bg-nav);
-            color: var(--text-primary);
-            border: 2px solid var(--border-light);
-            padding: 4px 10px;
-            cursor: pointer;
-            text-align: left;
-            transition: 0.1s;
-            border-style: outset;
-        }
-        .chatbot-window .chat-options button:hover {
-            background: var(--bg-card);
-            border-style: inset;
+            gap: 12px;
         }
 
-        /* ================================================================
-           RESPONSIVE
-           ================================================================ */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+        .chat-body .msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .chat-body .msg.bot {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.06);
+            border-bottom-left-radius: 4px;
+            color: #E8ECEF;
+        }
+
+        .chat-body .msg.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #42A5F5, #7C4DFF);
+            border-bottom-right-radius: 4px;
+            color: #fff;
+        }
+
+        .chat-body .typing {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 12px 18px;
+            border-radius: 16px;
+            border-bottom-left-radius: 4px;
+            font-size: 0.85rem;
+            color: #8899B0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chat-body .typing .dot {
+            animation: pulse 1.2s infinite;
+            display: inline-block;
+        }
+        .chat-body .typing .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .chat-body .typing .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes pulse {
+            0%,
+            80%,
+            100% {
+                opacity: 0.2;
             }
-            .header-info {
-                flex-wrap: wrap;
-                justify-content: center;
+            40% {
+                opacity: 1;
             }
-            .logo h1 { font-size: 1.8rem; }
-            .nav {
-                justify-content: center;
-                gap: 4px 10px;
+        }
+
+        .chat-footer {
+            padding: 12px 16px 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .chat-footer input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+            padding: 10px 16px;
+            color: #E8ECEF;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chat-footer input::placeholder {
+            color: #66788F;
+        }
+
+        .chat-footer input:focus {
+            border-color: #42A5F5;
+        }
+
+        .chat-footer button {
+            background: linear-gradient(135deg, #42A5F5, #7C4DFF);
+            border: none;
+            border-radius: 40px;
+            padding: 10px 18px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-footer button:hover {
+            opacity: 0.8;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .nav a {
-                font-size: 0.55rem;
-                padding: 4px 8px;
+
+            .hero h1 {
+                font-size: 2.6rem;
             }
+
+            .hero p {
+                max-width: 100%;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
-            .guide-section {
-                grid-template-columns: 1fr;
+
+            .section-title {
+                font-size: 2rem;
             }
-            .section-title { font-size: 1rem; }
-            .pricing-table { font-size: 0.65rem; min-width: 400px; }
-            .container { padding: 0.8rem 1rem; }
-            .chatbot-window { width: 280px; right: -10px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px 20px;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 160px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                gap: 10px 16px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stats .stat:last-child {
+                grid-column: span 2;
+            }
+
+            .info-bar .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .info-bar .left {
+                gap: 10px 16px;
+                font-size: 0.8rem;
+            }
+
+            .info-bar .right {
+                gap: 10px 16px;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .chat-window {
+                width: calc(100vw - 32px);
+                right: 16px;
+                bottom: 90px;
+            }
         }
 
         @media (max-width: 480px) {
-            .logo h1 { font-size: 1.4rem; }
-            .header-info { font-size: 0.65rem; }
-            .nav a { font-size: 0.45rem; padding: 3px 6px; }
-            .pricing-table { font-size: 0.55rem; min-width: 300px; }
-            .section-title { font-size: 0.85rem; }
-            .container { padding: 0.5rem 0.6rem; }
-            .promo-grid { grid-template-columns: 1fr; }
-            .chatbot-window { width: 240px; right: -5px; }
-        }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
 
-        @media (min-width: 1400px) {
-            .container { max-width: 1300px; padding: 2.5rem; }
-            .logo h1 { font-size: 3.2rem; }
-            .nav a { font-size: 0.9rem; padding: 10px 24px; }
-            .pricing-table { font-size: 1rem; }
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats .stat:last-child {
+                grid-column: span 1;
+            }
+
+            .pricing-table {
+                font-size: 0.8rem;
+                min-width: 400px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 12px 14px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- ============================================================
-    HEADER
-    ============================================================ -->
-    <header class="header">
-        <div class="logo">
-            <h1>Anjeig<span>·</span>Services</h1>
-            <p><i class="fas fa-microchip"></i> reparaciones 90s tech</p>
-        </div>
-        <div class="header-info">
-            <i class="fas fa-phone"></i> +56 9 1234 5678
-            <span style="opacity:0.4;">|</span>
-            <i class="fas fa-envelope"></i> info@anjeig.cl
-            <span style="opacity:0.4;">|</span>
-            <span class="clock-display" id="clockDisplay"><i class="far fa-clock"></i> 00:00:00</span>
-            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-                <i class="fas fa-moon" id="themeIcon"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- ============================================================
-    GUÍA DE MANTENIMIENTO Y SEGURIDAD
-    ============================================================ -->
-    <div class="guide-section">
-        <!-- ====== CONSEJOS DE MANTENIMIENTO ====== -->
-        <div class="guide-card">
-            <h3><i class="fas fa-screwdriver-wrench"></i> Mantenimiento preventivo</h3>
-            <ul>
-                <li><i class="fas fa-fan"></i> Limpia los ventiladores y disipadores cada 6 meses para evitar sobrecalentamiento.</li>
-                <li><i class="fas fa-thermometer-half"></i> Mantén tu equipo en un lugar ventilado, lejos de fuentes de calor.</li>
-                <li><i class="fas fa-sync-alt"></i> Actualiza el sistema operativo y los drivers regularmente.</li>
-                <li><i class="fas fa-trash-alt"></i> Elimina archivos temporales y programas que no uses.</li>
-                <li><i class="fas fa-bolt"></i> Usa un regulador de voltaje o UPS para proteger tu PC de cortes de luz.</li>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-microchip"></i>
+                <span>Anjeig</span>·IT
+            </a>
+            <ul class="nav-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="#curiosidades">Curiosidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto" class="nav-cta"><i class="fas fa-paper-plane"></i> Cotizar</a></li>
             </ul>
-            <div class="info-box">
-                <i class="fas fa-info-circle" style="color:var(--text-accent);"></i> 
-                Un mantenimiento adecuado puede alargar la vida útil de tu equipo hasta un 40%.
+        </div>
+    </nav>
+
+    <!-- ========== INFO BAR ========== -->
+    <div class="info-bar">
+        <div class="container">
+            <div class="left">
+                <span><i class="fas fa-phone"></i> +56 9 7665 4966</span>
+                <span><i class="fas fa-envelope"></i> s.carmonawright@gmail.com</span>
+                <span><i class="fas fa-clock"></i> <span class="clock" id="clockDisplay">--:--:--</span></span>
             </div>
-        </div>
-
-        <!-- ====== RECOMENDACIONES DE SEGURIDAD ====== -->
-        <div class="guide-card">
-            <h3><i class="fas fa-shield-alt"></i> Seguridad informática</h3>
-            <ul>
-                <li><i class="fas fa-lock"></i> Usa contraseñas largas y diferentes para cada servicio.</li>
-                <li><i class="fas fa-database"></i> Realiza copias de seguridad periódicas (regla 3-2-1).</li>
-                <li><i class="fas fa-shield-virus"></i> Mantén un antivirus actualizado y ejecuta análisis periódicos.</li>
-                <li><i class="fas fa-user-secret"></i> No abras correos o enlaces de remitentes desconocidos.</li>
-                <li><i class="fas fa-wifi"></i> Protege tu red Wi‑Fi con WPA2 y cambia la contraseña por defecto.</li>
-            </ul>
-            <div class="info-box">
-                <i class="fas fa-info-circle" style="color:var(--text-accent);"></i> 
-                El 95% de los ataques informáticos se deben a errores humanos. La prevención es clave.
-            </div>
-        </div>
-
-        <!-- ====== DATOS CURIOSOS SOBRE HARDWARE ====== -->
-        <div class="guide-card" style="grid-column: 1 / -1; max-width: 100%;">
-            <h3><i class="fas fa-microchip"></i> Curiosidades del hardware</h3>
-            <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
-                <li><i class="fas fa-hdd"></i> El primer disco duro (1956) pesaba más de una tonelada y solo tenía 5 MB.</li>
-                <li><i class="fas fa-memory"></i> La primera RAM (1950) usaba tambores magnéticos giratorios.</li>
-                <li><i class="fas fa-bolt"></i> El procesador más rápido del mundo (2024) supera los 100 mil millones de operaciones por segundo.</li>
-                <li><i class="fas fa-fan"></i> Las supercomputadoras usan sistemas de refrigeración líquida para no fundirse.</li>
-            </ul>
-            <div class="info-box">
-                <i class="fas fa-info-circle" style="color:var(--text-accent);"></i> 
-                En 1990, un disco duro de 1 GB costaba más de $10,000 USD. Hoy cabe en un pendrive que cuesta menos de $10 USD.
+            <div class="right">
+                <a href="mailto:s.carmonawright@gmail.com?subject=Consulta%20desde%20Anjeig%20IT&body=Hola,%20quiero%20solicitar%20información%20sobre...">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <!-- ============================================================
-    NAV
-    ============================================================ -->
-    <nav class="nav">
-        <a href="#servicios"><i class="fas fa-tools"></i> Servicios</a>
-        <a href="#porque"><i class="fas fa-star"></i> ¿Por qué?</a>
-        <a href="#promos"><i class="fas fa-gift"></i> Promos</a>
-        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-    </nav>
-
-    <!-- ============================================================
-    SECCIÓN: SERVICIOS (actualizada)
-    ============================================================ -->
-    <section id="servicios" class="section">
-        <div class="section-title"><i class="fas fa-wrench"></i> Servicios</div>
-        <p class="section-sub">Precios</p>
-        <div class="table-wrapper">
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Descripción</th>
-                        <th>Desde</th>
-                        <th>Hasta</th>
-                        <th>Modalidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="service-name">Diagnóstico</td>
-                        <td>Revisión inicial (se abona si repara)</td>
-                        <td class="price">$15k</td>
-                        <td class="price">$25k</td>
-                        <td><span class="type">Taller</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Formateo</td>
-                        <td>SO + drivers + programas básicos</td>
-                        <td class="price">$25k</td>
-                        <td class="price">$35k</td>
-                        <td><span class="type">Taller/Remoto</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Formateo + Respaldo</td>
-                        <td>SO + respaldo hasta 100GB</td>
-                        <td class="price">$35k</td>
-                        <td class="price">$50k</td>
-                        <td><span class="type">Taller</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Respaldo de datos</td>
-                        <td>Copia externa o migración</td>
-                        <td class="price">$15k</td>
-                        <td class="price">$25k</td>
-                        <td><span class="type">Presencial</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Asesorías informáticas complejas</td>
-                        <td>Consultoría avanzada, optimización de sistemas, redes, seguridad, virtualización</td>
-                        <td class="price">$120k</td>
-                        <td class="price">—</td>
-                        <td><span class="type">Presencial/Remoto</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Impresoras</td>
-                        <td>Drivers, Wi‑Fi, pruebas</td>
-                        <td class="price">$15k</td>
-                        <td class="price">$30k</td>
-                        <td><span class="type">Presencial</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Limpieza / Mantención</td>
-                        <td>Ventiladores, pasta térmica</td>
-                        <td class="price">$20k</td>
-                        <td class="price">$35k</td>
-                        <td><span class="type">Taller</span></td>
-                    </tr>
-                    <tr>
-                        <td class="service-name">Instalación Software</td>
-                        <td>Programas, antivirus, Office</td>
-                        <td class="price">$15k</td>
-                        <td class="price">$25k</td>
-                        <td><span class="type">Remoto</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    SECCIÓN: ¿POR QUÉ?
-    ============================================================ -->
-    <section id="porque" class="section">
-        <div class="section-title"><i class="fas fa-question-circle"></i> ¿Por qué?</div>
-        <div class="advantages">
-            <div class="advantage-item">
-                <i class="fas fa-clock"></i>
-                <h4>Rápido</h4>
-                <p>24 hrs diagnóstico</p>
-            </div>
-            <div class="advantage-item">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Garantía</h4>
-                <p>90 días</p>
-            </div>
-            <div class="advantage-item">
-                <i class="fas fa-hand-holding-heart"></i>
-                <h4>Cercano</h4>
-                <p>Explicamos todo</p>
-            </div>
-            <div class="advantage-item">
-                <i class="fas fa-home"></i>
-                <h4>Domicilio</h4>
-                <p>Sin costo extra</p>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="section-label">IT Services · 90s Tech Spirit</div>
+                    <h1>
+                        Soluciones <br />
+                        <span class="highlight">informáticas</span> <br />
+                        con alma técnica
+                    </h1>
+                    <p>
+                        Diagnóstico, mantenimiento, seguridad y asesoría avanzada.
+                        Rápidos, cercanos y con garantía de 90 días.
+                    </p>
+                    <div class="hero-badges">
+                        <span><i class="fas fa-bolt"></i> Diagnóstico 24 hrs</span>
+                        <span><i class="fas fa-shield-alt"></i> Garantía 90 días</span>
+                        <span><i class="fas fa-home"></i> Domicilio sin costo extra</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#servicios" class="btn-primary">
+                            <i class="fas fa-arrow-right"></i> Ver servicios
+                        </a>
+                        <a href="#contacto" class="btn-secondary">
+                            <i class="fas fa-comment"></i> Contactar
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="number">24h</div>
+                        <div class="label">Diagnóstico</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">90</div>
+                        <div class="label">Días de garantía</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">100%</div>
+                        <div class="label">Cercanos y claros</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    SECCIÓN: PROMOCIONES
-    ============================================================ -->
-    <section id="promos" class="section">
-        <div class="section-title"><i class="fas fa-gift"></i> Promociones</div>
-        <div class="promo-grid">
-            <div class="promo-banner">
-                <div class="promo-text"><i class="fas fa-wrench"></i> Diagnóstico gratis</div>
-                <div class="promo-code">con reparación</div>
-            </div>
-            <div class="promo-banner">
-                <div class="promo-text"><i class="fas fa-database"></i> 20% OFF respaldo</div>
-                <div class="promo-code">BACKUP20</div>
-            </div>
-            <div class="promo-banner">
-                <div class="promo-text"><i class="fas fa-bolt"></i> Oferta Express</div>
-                <div class="promo-code">20% OFF en Mantención + Diagnóstico · <strong>EXPRESS20</strong></div>
+    <!-- ========== SERVICIOS ========== -->
+    <section class="section" id="servicios">
+        <div class="container">
+            <div class="section-label">Nuestros servicios</div>
+            <h2 class="section-title">Lo que hacemos <span class="gradient-text">por tu equipo</span></h2>
+            <p class="section-sub">
+                Desde el diagnóstico hasta la asesoría compleja, pasando por formateo,
+                respaldo, limpieza e instalación de software.
+            </p>
+
+            <div class="service-grid">
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>Diagnóstico</h3>
+                    <div class="price">$15.000 – $25.000</div>
+                    <p>Revisión inicial completa. Se abona solo si se repara.</p>
+                    <span class="tag">Taller</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Formateo</h3>
+                    <div class="price">$25.000 – $35.000</div>
+                    <p>Sistema operativo + drivers + programas básicos.</p>
+                    <span class="tag">Taller / Remoto</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-database"></i></div>
+                    <h3>Formateo + Respaldo</h3>
+                    <div class="price">$35.000 – $50.000</div>
+                    <p>SO + respaldo de hasta 100 GB de datos.</p>
+                    <span class="tag">Taller</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-hdd"></i></div>
+                    <h3>Respaldo de datos</h3>
+                    <div class="price">$15.000 – $25.000</div>
+                    <p>Copia externa o migración de información.</p>
+                    <span class="tag">Presencial</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h3>Asesorías complejas</h3>
+                    <div class="price">Desde $120.000</div>
+                    <p>Consultoría avanzada: redes, seguridad, virtualización.</p>
+                    <span class="tag">Presencial / Remoto</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-print"></i></div>
+                    <h3>Impresoras</h3>
+                    <div class="price">$15.000 – $30.000</div>
+                    <p>Drivers, configuración Wi‑Fi, pruebas.</p>
+                    <span class="tag">Presencial</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-fan"></i></div>
+                    <h3>Limpieza / Mantención</h3>
+                    <div class="price">$20.000 – $35.000</div>
+                    <p>Ventiladores, cambio de pasta térmica.</p>
+                    <span class="tag">Taller</span>
+                </div>
+
+                <div class="service-card glow-box">
+                    <div class="icon"><i class="fas fa-download"></i></div>
+                    <h3>Instalación Software</h3>
+                    <div class="price">$15.000 – $25.000</div>
+                    <p>Programas, antivirus, Office y más.</p>
+                    <span class="tag">Remoto</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    SECCIÓN: CONTACTO
-    ============================================================ -->
-    <section id="contacto" class="section">
-        <div class="section-title"><i class="fas fa-address-card"></i> Contacto</div>
-        <div class="contact-grid">
-            <div>
-                <div class="contact-item"><i class="fas fa-phone-alt"></i> +56 9 1234 5678</div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> info@anjeig.cl</div>
-                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Sector 7G, Calle Lambda 404</div>
-                <div class="contact-item"><i class="fas fa-clock"></i> Lun-Vie 09-20 · Sáb 10-18</div>
-                <div class="contact-item" style="margin-top:10px;"><i class="fas fa-whatsapp" style="color:#25D366;"></i> WhatsApp: +56 9 8765 4321</div>
+    <!-- ========== PRECIOS (tabla) ========== -->
+    <section class="section" id="precios">
+        <div class="container">
+            <div class="section-label">Precios claros</div>
+            <h2 class="section-title">Tarifas <span class="gradient-text">transparentes</span></h2>
+            <p class="section-sub">
+                Todos nuestros precios incluyen garantía y atención personalizada.
+            </p>
 
-                <div style="margin-top:16px;">
-                    <a href="mailto:info@anjeig.cl?subject=Consulta%20desde%20Anjeig%20Services&body=Hola,%20quiero%20solicitar%20información%20sobre..." 
-                       class="btn-email"><i class="fas fa-envelope"></i> Enviar correo</a>
-                    <span style="font-size:0.6rem; color:var(--text-muted); margin-left:10px;">(Outlook, Gmail, etc.)</span>
+            <div class="pricing-wrap">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Descripción</th>
+                            <th>Desde</th>
+                            <th>Hasta</th>
+                            <th>Modalidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Diagnóstico</strong></td>
+                            <td>Revisión inicial (se abona si repara)</td>
+                            <td class="price-range">$15.000</td>
+                            <td class="price-range">$25.000</td>
+                            <td class="modalidad">Taller</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Formateo</strong></td>
+                            <td>SO + drivers + programas básicos</td>
+                            <td class="price-range">$25.000</td>
+                            <td class="price-range">$35.000</td>
+                            <td class="modalidad">Taller / Remoto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Formateo + Respaldo</strong></td>
+                            <td>SO + respaldo hasta 100 GB</td>
+                            <td class="price-range">$35.000</td>
+                            <td class="price-range">$50.000</td>
+                            <td class="modalidad">Taller</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Respaldo de datos</strong></td>
+                            <td>Copia externa o migración</td>
+                            <td class="price-range">$15.000</td>
+                            <td class="price-range">$25.000</td>
+                            <td class="modalidad">Presencial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Asesorías complejas</strong></td>
+                            <td>Consultoría avanzada</td>
+                            <td class="price-range">$120.000</td>
+                            <td class="price-range">—</td>
+                            <td class="modalidad">Presencial / Remoto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Impresoras</strong></td>
+                            <td>Drivers, Wi‑Fi, pruebas</td>
+                            <td class="price-range">$15.000</td>
+                            <td class="price-range">$30.000</td>
+                            <td class="modalidad">Presencial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Limpieza / Mantención</strong></td>
+                            <td>Ventiladores, pasta térmica</td>
+                            <td class="price-range">$20.000</td>
+                            <td class="price-range">$35.000</td>
+                            <td class="modalidad">Taller</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instalación Software</strong></td>
+                            <td>Programas, antivirus, Office</td>
+                            <td class="price-range">$15.000</td>
+                            <td class="price-range">$25.000</td>
+                            <td class="modalidad">Remoto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== POR QUÉ ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label">¿Por qué Anjeig?</div>
+            <h2 class="section-title">Nuestras <span class="gradient-text">ventajas</span></h2>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Rápido</h4>
+                    <p>Diagnóstico en 24 horas</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-medal"></i></div>
+                    <h4>Garantía</h4>
+                    <p>90 días de respaldo</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h4>Cercano</h4>
+                    <p>Explicamos todo con claridad</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-truck"></i></div>
+                    <h4>Domicilio</h4>
+                    <p>Sin costo adicional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CURIOSIDADES ========== -->
+    <section class="section" id="curiosidades">
+        <div class="container">
+            <div class="section-label">Curiosidades del hardware</div>
+            <h2 class="section-title">Datos que <span class="gradient-text">impactan</span></h2>
+            <p class="section-sub">
+                Pequeñas píldoras de historia y tecnología que nos inspiran.
+            </p>
+
+            <div class="curiosity-grid">
+                <div class="curiosity-card">
+                    <div class="year">1956</div>
+                    <p>El primer disco duro pesaba más de una tonelada y solo tenía 5 MB.</p>
+                </div>
+                <div class="curiosity-card">
+                    <div class="year">1950</div>
+                    <p>La primera RAM usaba tambores magnéticos giratorios.</p>
+                </div>
+                <div class="curiosity-card">
+                    <div class="year">2024</div>
+                    <p>El procesador más rápido supera los 100 mil millones de operaciones por segundo.</p>
+                </div>
+                <div class="curiosity-card">
+                    <div class="year">1990</div>
+                    <p>Un disco duro de 1 GB costaba más de USD $10.000. Hoy cabe en un pendrive de menos de $10.</p>
+                </div>
+                <div class="curiosity-card">
+                    <div class="year">Actual</div>
+                    <p>Las supercomputadoras usan refrigeración líquida para no fundirse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEGURIDAD + MANTENIMIENTO (tips) ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label">Buenas prácticas</div>
+            <h2 class="section-title">Seguridad y <span class="gradient-text">mantenimiento</span></h2>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:32px;">
+                <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:28px 24px; border:1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-weight:600; margin-bottom:16px; display:flex; gap:10px; align-items:center;">
+                        <i class="fas fa-shield-alt" style="color:#42A5F5;"></i> Seguridad informática
+                    </h3>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; color:#A0B4CC; font-size:0.95rem;">
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Usa contraseñas largas y diferentes para cada servicio.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Realiza copias de seguridad periódicas (regla 3-2-1).</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Mantén un antivirus actualizado y ejecuta análisis periódicos.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> No abras correos o enlaces de remitentes desconocidos.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Protege tu red Wi‑Fi con WPA2 y cambia la contraseña por defecto.</li>
+                    </ul>
+                    <div style="margin-top:16px; padding:14px 18px; background:rgba(66,165,245,0.08); border-radius:12px; font-size:0.9rem; color:#64B5F6;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right:10px;"></i> El 95% de los ataques informáticos se deben a errores humanos. La prevención es clave.
+                    </div>
+                </div>
+
+                <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:28px 24px; border:1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-weight:600; margin-bottom:16px; display:flex; gap:10px; align-items:center;">
+                        <i class="fas fa-tools" style="color:#42A5F5;"></i> Mantenimiento preventivo
+                    </h3>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; color:#A0B4CC; font-size:0.95rem;">
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Limpia los ventiladores y disipadores cada 6 meses para evitar sobrecalentamiento.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Mantén tu equipo en un lugar ventilado, lejos de fuentes de calor.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Actualiza el sistema operativo y los drivers regularmente.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Elimina archivos temporales y programas que no uses.</li>
+                        <li><i class="fas fa-check-circle" style="color:#42A5F5; margin-right:10px;"></i> Usa un regulador de voltaje o UPS para proteger tu PC de cortes de luz.</li>
+                    </ul>
+                    <div style="margin-top:16px; padding:14px 18px; background:rgba(66,165,245,0.08); border-radius:12px; font-size:0.9rem; color:#64B5F6;">
+                        <i class="fas fa-chart-line" style="margin-right:10px;"></i> Un mantenimiento adecuado puede alargar la vida útil de tu equipo hasta un 40%.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="section-label">Contacto</div>
+            <h2 class="section-title">Hablemos de <span class="gradient-text">tu proyecto</span></h2>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Estamos para ayudarte</h3>
+                    <p>
+                        Escríbenos, llámanos o visítanos en Maipú. Respondemos rápido
+                        y con total claridad.
+                    </p>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <span class="label">Teléfono</span>
+                        <a href="tel:+56976654966">+56 9 7665 4966</a>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <span class="label">Email</span>
+                        <a href="mailto:s.carmonawright@gmail.com">s.carmonawright@gmail.com</a>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="label">WhatsApp</span>
+                        <a href="#">+56 9 7665 4966</a>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="label">Dirección</span>
+                        <span>Pasaje Matías 1167, Maipú, R.Metropolitana</span>
+                    </div>
+
+                    <div style="margin-top:20px;">
+                        <h4 style="font-weight:600; margin-bottom:6px;">Medios de pago</h4>
+                        <div class="payment-methods">
+                            <span>Efectivo</span>
+                            <span>Transferencia</span>
+                            <span>Tarjetas crédito/débito</span>
+                            <span>Mercado Pago</span>
+                            <span>PayPal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hours-box">
+                    <h4><i class="far fa-clock" style="color:#42A5F5; margin-right:10px;"></i> Horario de atención</h4>
+                    <div class="day">
+                        <span>Lunes a Viernes</span>
+                        <span class="time">10:00 – 20:00</span>
+                    </div>
+                    <div class="day">
+                        <span>Sábados</span>
+                        <span class="time">10:00 – 18:00</span>
+                    </div>
+                    <div class="day">
+                        <span>Domingos</span>
+                        <span class="time closed">Cerrado</span>
+                    </div>
+
+                    <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);">
+                        <a href="mailto:s.carmonawright@gmail.com?subject=Consulta%20desde%20Anjeig%20IT&body=Hola,%20quiero%20solicitar%20información%20sobre..." class="btn-primary" style="width:100%; justify-content:center;">
+                            <i class="fas fa-paper-plane"></i> Enviar correo
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="contact-info-block">
-                <h4><i class="fas fa-credit-card"></i> Medios de pago</h4>
-                <p><i class="fas fa-check-circle" style="color:var(--text-title);"></i> Efectivo / Transferencia</p>
-                <p><i class="fas fa-check-circle" style="color:var(--text-title);"></i> Tarjetas de crédito/débito</p>
-                <p><i class="fas fa-check-circle" style="color:var(--text-title);"></i> Mercado Pago / PayPal</p>
-                <hr style="border-color:var(--border-light); margin:8px 0;">
-                <h4 style="margin-top:6px;"><i class="fas fa-clock"></i> Horario detallado</h4>
-                <p>Lunes a Viernes: 09:00 – 20:00</p>
-                <p>Sábados: 10:00 – 18:00</p>
-                <p>Domingos: Cerrado (solo emergencias)</p>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Anjeig · IT Services — con ❤️ desde Maipú</span>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    FOOTER
-    ============================================================ -->
-    <footer class="footer">
-        <div class="social-links">
-            <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank" aria-label="Dev.to"><i class="fab fa-dev"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-        <p style="font-size:0.55rem; margin-top:6px; opacity:0.6;">
-            <i class="fas fa-copyright"></i> 2026 · Anjeig Services · Hecho con <i class="fas fa-heart" style="color:#ff4466;"></i> y código de los 90s.
-        </p>
-    </footer>
-
-</div>
-
-<!-- ============================================================
-CHATBOT
-============================================================ -->
-<div class="chatbot-container">
-    <button class="chatbot-toggle" id="chatToggleBtn" aria-label="Ayuda">
+    <!-- ========== CHAT BOT ========== -->
+    <!-- Botón flotante -->
+    <button class="chat-btn" id="chatToggle" aria-label="Abrir asistente">
         <i class="fas fa-robot"></i>
+        <span>Asistente Anjeig</span>
     </button>
-    <div class="chatbot-window" id="chatWindow">
+
+    <!-- Ventana del chat -->
+    <div class="chat-window" id="chatWindow">
         <div class="chat-header">
-            <span><i class="fas fa-comment-dots"></i> Asistente Anjeig</span>
-            <span class="close-btn" id="chatCloseBtn">&times;</span>
+            <div class="left">
+                <i class="fas fa-robot"></i>
+                <div>
+                    Asistente Anjeig
+                    <span>¡Hola! Soy el asistente de Anjeig</span>
+                </div>
+            </div>
+            <button class="close" id="chatClose"><i class="fas fa-times"></i></button>
         </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">🤖 ¡Hola! Soy el asistente de Anjeig Services. ¿En qué puedo ayudarte?</div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg bot">👋 ¡Hola! Soy el asistente de Anjeig. ¿En qué puedo ayudarte hoy?</div>
+            <div class="msg bot">Puedes preguntarme por servicios, precios, horarios o cualquier duda.</div>
         </div>
-        <div class="chat-options" id="chatOptions">
-            <button data-question="servicios">📋 Lista de servicios</button>
-            <button data-question="precios">💰 Precios y presupuestos</button>
-            <button data-question="garantia">🛡️ Garantía</button>
-            <button data-question="horario">🕒 Horario de atención</button>
-            <button data-question="domicilio">🏠 Servicio a domicilio</button>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." />
+            <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-</div>
 
-<!-- ============================================================
-JAVASCRIPT (reloj, tema, chat)
-============================================================ -->
-<script>
-    (function() {
-        'use strict';
-
-        // --- RELOJ EN TIEMPO REAL ---
+    <script>
+        // ============================================================
+        // 1. RELOJ EN VIVO
+        // ============================================================
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const clockDisplay = document.getElementById('clockDisplay');
-            if (clockDisplay) {
-                clockDisplay.innerHTML = `<i class="far fa-clock"></i> ${hours}:${minutes}:${seconds}`;
-            }
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clockDisplay').textContent = h + ':' + m + ':' + s;
         }
-        setInterval(updateClock, 1000);
         updateClock();
+        setInterval(updateClock, 1000);
 
-        // --- MODO OSCURO / CLARO ---
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const html = document.documentElement;
-
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-
-        function updateThemeIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.className = 'fas fa-moon';
-            } else {
-                themeIcon.className = 'fas fa-sun';
-            }
-        }
-
-        // --- NAVEGACIÓN SUAVE ---
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
-
-        // ================================================================
-        // CHATBOT
-        // ================================================================
-        const chatToggleBtn = document.getElementById('chatToggleBtn');
+        // ============================================================
+        // 2. CHAT BOT (UI + respuestas automáticas)
+        // ============================================================
+        const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
-        const chatCloseBtn = document.getElementById('chatCloseBtn');
-        const chatMessages = document.getElementById('chatMessages');
-        const chatOptions = document.getElementById('chatOptions');
+        const chatClose = document.getElementById('chatClose');
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
 
-        chatToggleBtn.addEventListener('click', function() {
+        // Abrir / cerrar ventana
+        chatToggle.addEventListener('click', () => {
             chatWindow.classList.toggle('open');
         });
-        chatCloseBtn.addEventListener('click', function() {
+
+        chatClose.addEventListener('click', () => {
             chatWindow.classList.remove('open');
         });
 
-        const responses = {
-            'servicios': '📋 Ofrecemos: diagnóstico, formateo, respaldo de datos, asesorías complejas, soporte de impresoras, limpieza y mantención, e instalación de software. Revisa la tabla de precios para más detalles.',
-            'precios': '💰 Nuestros precios van desde $15.000 hasta $120.000 según el servicio. Puedes ver la tabla completa en la sección "Servicios". Ofrecemos presupuestos sin compromiso.',
-            'garantia': '🛡️ Todos nuestros servicios tienen garantía de 90 días. Si algo falla dentro de ese período, lo reparamos sin costo adicional (términos y condiciones aplican).',
-            'horario': '🕒 Atención de lunes a viernes de 09:00 a 20:00, y sábados de 10:00 a 18:00. Domingos cerrado (solo emergencias).',
-            'domicilio': '🏠 Sí, ofrecemos servicio a domicilio sin costo adicional dentro de la ciudad. Contáctanos para coordinar una visita.'
-        };
-
-        chatOptions.addEventListener('click', function(e) {
-            const target = e.target.closest('button');
-            if (!target) return;
-            const question = target.dataset.question;
-            if (!question) return;
-
-            const userMsg = document.createElement('div');
-            userMsg.className = 'msg user';
-            userMsg.textContent = target.textContent.trim();
-            chatMessages.appendChild(userMsg);
-
-            const botMsg = document.createElement('div');
-            botMsg.className = 'msg bot';
-            botMsg.textContent = responses[question] || '🤔 Lo siento, no tengo una respuesta para eso. Escríbenos un correo y te atenderemos personalmente.';
-            chatMessages.appendChild(botMsg);
-
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+        // Cerrar al hacer clic fuera (opcional)
+        document.addEventListener('click', (e) => {
+            if (chatWindow.classList.contains('open')) {
+                const isClickInside = chatWindow.contains(e.target) || chatToggle.contains(e.target);
+                if (!isClickInside) {
+                    chatWindow.classList.remove('open');
+                }
+            }
         });
 
-    })();
-</script>
+        // Respuestas del bot
+        function getBotResponse(userMsg) {
+            const msg = userMsg.toLowerCase().trim();
+
+            if (msg.includes('hola') || msg.includes('buenas') || msg.includes('saludos')) {
+                return '👋 ¡Hola! ¿Cómo estás? Cuéntame, ¿necesitas ayuda con algún servicio en particular?';
+            }
+            if (msg.includes('servicio') || msg.includes('servicios') || msg.includes('hacen')) {
+                return '🔧 Ofrecemos diagnóstico, formateo, respaldo de datos, asesorías complejas, impresoras, limpieza/mantención e instalación de software. ¿Te interesa alguno en especial?';
+            }
+            if (msg.includes('precio') || msg.includes('costo') || msg.includes('tarifa') || msg.includes('cuanto')) {
+                return '💰 Los precios varían según el servicio. Por ejemplo, diagnóstico desde $15.000, formateo desde $25.000 y asesorías complejas desde $120.000. ¿Quieres que te detalle alguno?';
+            }
+            if (msg.includes('horario') || msg.includes('abren') || msg.includes('atencion')) {
+                return '🕐 Atendemos de lunes a viernes de 10:00 a 20:00, y sábados de 10:00 a 18:00. Los domingos estamos cerrados.';
+            }
+            if (msg.includes('direccion') || msg.includes('donde') || msg.includes('ubicacion')) {
+                return '📍 Estamos en Pasaje Matías 1167, Maipú, Región Metropolitana. ¡Te esperamos!';
+            }
+            if (msg.includes('garantia') || msg.includes('garantía')) {
+                return '✅ Todos nuestros servicios tienen garantía de 90 días. ¡Trabajamos con total confianza!';
+            }
+            if (msg.includes('pago') || msg.includes('pagos') || msg.includes('tarjeta')) {
+                return '💳 Aceptamos efectivo, transferencia, tarjetas de crédito/débito, Mercado Pago y PayPal.';
+            }
+            if (msg.includes('gracias') || msg.includes('graci')) {
+                return '😊 ¡De nada! Estamos para ayudarte. ¿Algo más en lo que pueda asistirte?';
+            }
+            if (msg.includes('chao') || msg.includes('adios') || msg.includes('bye')) {
+                return '👋 ¡Chao! Si necesitas algo más, aquí estoy. ¡Que tengas un excelente día!';
+            }
+
+            // Respuesta por defecto
+            return '🤔 No estoy seguro de haber entendido. Puedo ayudarte con información sobre servicios, precios, horario, dirección, garantía o medios de pago. ¿Qué te gustaría saber?';
+        }
+
+        function addMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = 'msg ' + (isUser ? 'user' : 'bot');
+            div.textContent = text;
+            chatBody.appendChild(div);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'typing';
+            div.id = 'typingIndicator';
+            div.innerHTML = 'Anjeig está escribiendo<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
+            chatBody.appendChild(div);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function removeTyping() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        function handleUserMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, true);
+            chatInput.value = '';
+
+            // Mostrar indicador de escritura
+            showTyping();
+
+            // Simular delay del bot
+            setTimeout(() => {
+                removeTyping();
+                const reply = getBotResponse(text);
+                addMessage(reply, false);
+            }, 400 + Math.random() * 600);
+        }
+
+        chatSend.addEventListener('click', handleUserMessage);
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleUserMessage();
+            }
+        });
+
+        // Mensaje de bienvenida automático al cargar (solo si no hay mensajes previos)
+        // Ya está en el HTML
+        console.log('🤖 Asistente Anjeig listo.');
+    </script>
 
 </body>
 </html>
