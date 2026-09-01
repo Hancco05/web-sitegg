@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anjeig · Soporte TI — Precios y pagos</title>
+    <title>Anjeig · Soporte TI — Dark Neon</title>
 
     <!-- Google Fonts: Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +23,7 @@
 
         body {
             font-family: 'Space Grotesk', 'Inter', sans-serif;
-            background: #0a0e17;
+            background: #000000;
             color: #e0e8f0;
             line-height: 1.6;
             scroll-behavior: smooth;
@@ -47,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #0a0e17;
+            background: #000000;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -67,19 +67,20 @@
             font-size: 4rem;
             font-weight: 700;
             letter-spacing: -1px;
-            background: linear-gradient(135deg, #42a5f5, #7c4dff);
+            background: linear-gradient(135deg, #42a5f5, #aa80ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: pulseGlow 2s infinite alternate;
+            filter: drop-shadow(0 0 40px rgba(66, 165, 245, 0.4));
         }
 
         @keyframes pulseGlow {
             0% {
-                text-shadow: 0 0 20px rgba(66, 165, 245, 0.2);
+                filter: drop-shadow(0 0 20px rgba(66, 165, 245, 0.2));
             }
             100% {
-                text-shadow: 0 0 60px rgba(66, 165, 245, 0.6);
+                filter: drop-shadow(0 0 60px rgba(66, 165, 245, 0.8));
             }
         }
 
@@ -91,6 +92,7 @@
             border-top: 4px solid #42a5f5;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.2);
         }
 
         @keyframes spin {
@@ -119,10 +121,11 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(10, 14, 23, 0.88);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(66, 165, 245, 0.08);
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.15);
             padding: 14px 0;
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.05);
         }
 
         .navbar .container {
@@ -144,13 +147,15 @@
         .logo i {
             font-size: 1.8rem;
             color: #42a5f5;
+            filter: drop-shadow(0 0 12px #42a5f5aa);
         }
 
         .logo span {
-            background: linear-gradient(135deg, #42a5f5, #7c4dff);
+            background: linear-gradient(135deg, #42a5f5, #aa80ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 12px rgba(66, 165, 245, 0.3));
         }
 
         .nav-links {
@@ -164,12 +169,14 @@
 
         .nav-links a {
             color: #8aa0c0;
-            transition: color 0.2s;
+            transition: color 0.2s, text-shadow 0.2s;
             letter-spacing: 0.2px;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #e0e8f0;
+            color: #f0f4ff;
+            text-shadow: 0 0 20px rgba(66, 165, 245, 0.3);
         }
 
         .nav-cta {
@@ -179,20 +186,45 @@
             font-weight: 600;
             color: #fff !important;
             transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.2);
         }
 
         .nav-cta:hover {
             transform: scale(1.04);
-            box-shadow: 0 0 30px rgba(66, 165, 245, 0.3);
+            box-shadow: 0 0 50px rgba(66, 165, 245, 0.5);
+            color: #fff !important;
         }
 
         /* ---------- HERO ---------- */
         .hero {
             padding: 140px 0 60px;
-            background: radial-gradient(ellipse at 20% 30%, rgba(66, 165, 245, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 70%, rgba(124, 77, 255, 0.06) 0%, transparent 50%),
-                #0a0e17;
-            border-bottom: 1px solid rgba(66, 165, 245, 0.06);
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(66, 165, 245, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(124, 77, 255, 0.10) 0%, transparent 50%),
+                #000000;
+            border-bottom: 1px solid rgba(66, 165, 245, 0.08);
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(66, 165, 245, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            animation: heroGlow 20s infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(5%, 5%);
+            }
         }
 
         .hero-grid {
@@ -200,6 +232,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -211,17 +245,19 @@
         }
 
         .hero h1 .highlight {
-            background: linear-gradient(135deg, #42a5f5, #7c4dff);
+            background: linear-gradient(135deg, #42a5f5, #aa80ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(66, 165, 245, 0.3));
         }
 
         .hero p {
             font-size: 1.1rem;
-            color: #8aa0c0;
+            color: #a0b8d0;
             max-width: 500px;
             margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
 
         .hero-badges {
@@ -236,15 +272,18 @@
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
-            color: #b0c8e0;
-            background: rgba(66, 165, 245, 0.04);
+            color: #c0d8f0;
+            background: rgba(66, 165, 245, 0.06);
             padding: 6px 14px;
             border-radius: 40px;
-            border: 1px solid rgba(66, 165, 245, 0.06);
+            border: 1px solid rgba(66, 165, 245, 0.10);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 20px rgba(66, 165, 245, 0.03);
         }
 
         .hero-badges i {
             color: #42a5f5;
+            filter: drop-shadow(0 0 8px #42a5f566);
         }
 
         .btn-primary {
@@ -260,30 +299,33 @@
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
             font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.2);
         }
 
         .btn-primary:hover {
             transform: scale(1.04);
-            box-shadow: 0 0 40px rgba(66, 165, 245, 0.3);
+            box-shadow: 0 0 60px rgba(66, 165, 245, 0.5);
         }
 
         .btn-secondary {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 14px 36px;
             border-radius: 60px;
             font-weight: 500;
             color: #e0e8f0;
-            transition: background 0.2s, border-color 0.2s;
+            transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
             font-family: 'Space Grotesk', sans-serif;
+            backdrop-filter: blur(4px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-color: rgba(66, 165, 245, 0.3);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.05);
         }
 
         .hero-stats {
@@ -298,18 +340,21 @@
             padding: 20px 16px;
             text-align: center;
             border: 1px solid rgba(66, 165, 245, 0.06);
-            transition: background 0.3s, border-color 0.3s;
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(4px);
         }
 
         .hero-stats .stat:hover {
             background: rgba(66, 165, 245, 0.04);
-            border-color: rgba(66, 165, 245, 0.15);
+            border-color: rgba(66, 165, 245, 0.2);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.05);
         }
 
         .hero-stats .stat .number {
             font-size: 2rem;
             font-weight: 700;
             color: #42a5f5;
+            text-shadow: 0 0 20px rgba(66, 165, 245, 0.3);
         }
 
         .hero-stats .stat .label {
@@ -322,6 +367,7 @@
         .section {
             padding: 70px 0;
             border-bottom: 1px solid rgba(66, 165, 245, 0.04);
+            position: relative;
         }
 
         .section:last-of-type {
@@ -335,6 +381,7 @@
             letter-spacing: 2px;
             color: #42a5f5;
             margin-bottom: 6px;
+            text-shadow: 0 0 20px rgba(66, 165, 245, 0.15);
         }
 
         .section-title {
@@ -342,6 +389,14 @@
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-bottom: 14px;
+        }
+
+        .section-title .highlight {
+            background: linear-gradient(135deg, #42a5f5, #aa80ff, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(66, 165, 245, 0.2));
         }
 
         .section-sub {
@@ -364,11 +419,12 @@
             padding: 28px 24px;
             border: 1px solid rgba(66, 165, 245, 0.06);
             transition: border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(4px);
         }
 
         .ti-block:hover {
-            border-color: rgba(66, 165, 245, 0.15);
-            box-shadow: 0 0 30px rgba(66, 165, 245, 0.04);
+            border-color: rgba(66, 165, 245, 0.2);
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.05);
         }
 
         .ti-block h3 {
@@ -382,6 +438,7 @@
 
         .ti-block h3 i {
             color: #42a5f5;
+            filter: drop-shadow(0 0 8px #42a5f566);
         }
 
         .ti-block p {
@@ -406,6 +463,7 @@
         .ti-block ul li i {
             color: #42a5f5;
             width: 18px;
+            filter: drop-shadow(0 0 6px #42a5f544);
         }
 
         /* ---------- SERVICIOS DESTACADOS ---------- */
@@ -428,7 +486,7 @@
 
         .service-showcase-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 0 50px rgba(66, 165, 245, 0.08);
+            box-shadow: 0 0 60px rgba(66, 165, 245, 0.08);
             border-color: rgba(66, 165, 245, 0.2);
         }
 
@@ -443,12 +501,14 @@
             margin: 0 auto 16px;
             font-size: 2.4rem;
             color: #42a5f5;
-            transition: background 0.3s, transform 0.3s;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 20px rgba(66, 165, 245, 0.05);
         }
 
         .service-showcase-card:hover .icon-wrapper {
             background: rgba(66, 165, 245, 0.15);
             transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.15);
         }
 
         .service-showcase-card h3 {
@@ -472,6 +532,7 @@
             padding: 4px 14px;
             border-radius: 40px;
             border: 1px solid rgba(66, 165, 245, 0.08);
+            box-shadow: 0 0 12px rgba(66, 165, 245, 0.05);
         }
 
         /* ---------- PRECIOS (TABLA) ---------- */
@@ -479,10 +540,10 @@
             overflow-x: auto;
             margin-top: 32px;
             border-radius: 24px;
-            border: 1px solid rgba(66, 165, 245, 0.06);
+            border: 1px solid rgba(66, 165, 245, 0.08);
             background: rgba(255, 255, 255, 0.01);
             backdrop-filter: blur(4px);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 60px rgba(66, 165, 245, 0.03);
         }
 
         .pricing-table {
@@ -523,17 +584,11 @@
             font-weight: 700;
             color: #64b5f6;
             white-space: nowrap;
-            text-shadow: 0 0 12px rgba(66, 165, 245, 0.1);
+            text-shadow: 0 0 16px rgba(66, 165, 245, 0.15);
         }
 
         .pricing-table tr:hover td {
             background: rgba(66, 165, 245, 0.02);
-        }
-
-        .pricing-table .price-note {
-            font-size: 0.7rem;
-            color: #6a809a;
-            font-weight: 400;
         }
 
         /* ---------- MEDIOS DE PAGO ---------- */
@@ -556,8 +611,8 @@
 
         .payment-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 0 40px rgba(66, 165, 245, 0.06);
-            border-color: rgba(66, 165, 245, 0.15);
+            box-shadow: 0 0 50px rgba(66, 165, 245, 0.06);
+            border-color: rgba(66, 165, 245, 0.2);
         }
 
         .payment-card .payment-icon {
@@ -565,17 +620,7 @@
             color: #42a5f5;
             margin-bottom: 10px;
             display: block;
-        }
-
-        .payment-card .payment-icon img {
-            width: 60px;
-            height: auto;
-            filter: brightness(0.8) saturate(0.8);
-            transition: filter 0.3s;
-        }
-
-        .payment-card:hover .payment-icon img {
-            filter: brightness(1) saturate(1);
+            filter: drop-shadow(0 0 16px #42a5f544);
         }
 
         .payment-card h4 {
@@ -603,7 +648,7 @@
             font-weight: 500;
             font-family: 'Space Grotesk', sans-serif;
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -613,6 +658,7 @@
             background: rgba(66, 165, 245, 0.04);
             border-color: rgba(66, 165, 245, 0.3);
             color: #e0e8f0;
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.05);
         }
 
         /* ---------- MODAL PAGOS ---------- */
@@ -623,8 +669,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -647,7 +693,7 @@
         }
 
         .modal-content {
-            background: #121a2a;
+            background: #0a0e17;
             border-radius: 28px;
             padding: 40px 36px;
             max-width: 640px;
@@ -655,7 +701,7 @@
             max-height: 80vh;
             overflow-y: auto;
             border: 1px solid rgba(66, 165, 245, 0.08);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(66, 165, 245, 0.03);
             position: relative;
         }
 
@@ -683,10 +729,11 @@
         }
 
         .modal-content h2 .highlight {
-            background: linear-gradient(135deg, #42a5f5, #7c4dff);
+            background: linear-gradient(135deg, #42a5f5, #aa80ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(66, 165, 245, 0.15));
         }
 
         .modal-content .modal-sub {
@@ -713,6 +760,7 @@
             width: 40px;
             text-align: center;
             margin-top: 2px;
+            filter: drop-shadow(0 0 12px #42a5f544);
         }
 
         .modal-content .payment-detail .info {
@@ -740,6 +788,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             align-items: center;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
         }
 
         .protocol-block .text h3 {
@@ -768,6 +818,7 @@
 
         .protocol-block .text ul li i {
             color: #42a5f5;
+            filter: drop-shadow(0 0 6px #42a5f544);
         }
 
         .protocol-block .icon-grid {
@@ -782,18 +833,20 @@
             padding: 20px 12px;
             text-align: center;
             border: 1px solid rgba(66, 165, 245, 0.04);
-            transition: background 0.3s, border-color 0.3s;
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
 
         .protocol-block .icon-grid .icon-box:hover {
             background: rgba(66, 165, 245, 0.04);
             border-color: rgba(66, 165, 245, 0.12);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.03);
         }
 
         .protocol-block .icon-grid .icon-box i {
             font-size: 2rem;
             color: #42a5f5;
             margin-bottom: 6px;
+            filter: drop-shadow(0 0 8px #42a5f544);
         }
 
         .protocol-block .icon-grid .icon-box span {
@@ -816,18 +869,21 @@
             padding: 24px 20px;
             text-align: center;
             border: 1px solid rgba(66, 165, 245, 0.06);
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(4px);
         }
 
         .support-item:hover {
             transform: translateY(-4px);
-            border-color: rgba(66, 165, 245, 0.15);
+            border-color: rgba(66, 165, 245, 0.2);
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.04);
         }
 
         .support-item i {
             font-size: 2.2rem;
             color: #42a5f5;
             margin-bottom: 10px;
+            filter: drop-shadow(0 0 12px #42a5f544);
         }
 
         .support-item h4 {
@@ -870,15 +926,17 @@
         .contact-detail i {
             width: 24px;
             color: #42a5f5;
+            filter: drop-shadow(0 0 8px #42a5f544);
         }
 
         .contact-detail a {
             color: #e0e8f0;
-            transition: color 0.2s;
+            transition: color 0.2s, text-shadow 0.2s;
         }
 
         .contact-detail a:hover {
             color: #42a5f5;
+            text-shadow: 0 0 16px rgba(66, 165, 245, 0.2);
         }
 
         .hours-box {
@@ -886,6 +944,7 @@
             border-radius: 20px;
             padding: 24px;
             border: 1px solid rgba(66, 165, 245, 0.06);
+            backdrop-filter: blur(4px);
         }
 
         .hours-box h4 {
@@ -928,11 +987,12 @@
 
         .footer-bottom .socials a {
             color: #6a809a;
-            transition: color 0.2s;
+            transition: color 0.2s, text-shadow 0.2s;
         }
 
         .footer-bottom .socials a:hover {
-            color: #e0e8f0;
+            color: #42a5f5;
+            text-shadow: 0 0 16px rgba(66, 165, 245, 0.2);
         }
 
         /* ---------- CHAT BOT ---------- */
@@ -951,7 +1011,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 0 40px rgba(66, 165, 245, 0.3);
+            box-shadow: 0 0 50px rgba(66, 165, 245, 0.3);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.3s;
             font-family: 'Space Grotesk', sans-serif;
@@ -961,11 +1021,12 @@
 
         .chat-btn:hover {
             transform: scale(1.06);
-            box-shadow: 0 0 60px rgba(66, 165, 245, 0.5);
+            box-shadow: 0 0 80px rgba(66, 165, 245, 0.6);
         }
 
         .chat-btn i {
             font-size: 1.4rem;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
         }
 
         .chat-window {
@@ -975,10 +1036,10 @@
             z-index: 998;
             width: 400px;
             max-width: calc(100vw - 48px);
-            background: #0d121f;
+            background: #080c16;
             border-radius: 28px;
             border: 1px solid rgba(66, 165, 245, 0.10);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(66, 165, 245, 0.05);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(66, 165, 245, 0.03);
             display: none;
             flex-direction: column;
             overflow: hidden;
@@ -1019,7 +1080,7 @@
         .chat-header .left i {
             font-size: 1.8rem;
             color: #42a5f5;
-            filter: drop-shadow(0 0 12px #42a5f566);
+            filter: drop-shadow(0 0 16px #42a5f566);
         }
 
         .chat-header .left div {
@@ -1069,7 +1130,8 @@
             background: rgba(255, 255, 255, 0.04);
             border-bottom-left-radius: 4px;
             color: #d6e0f0;
-            border: 1px solid rgba(66, 165, 245, 0.04);
+            border: 1px solid rgba(66, 165, 245, 0.06);
+            box-shadow: 0 0 20px rgba(66, 165, 245, 0.02);
         }
 
         .chat-body .msg.user {
@@ -1077,7 +1139,7 @@
             background: linear-gradient(135deg, #42a5f5, #7c4dff);
             border-bottom-right-radius: 4px;
             color: #fff;
-            box-shadow: 0 0 20px rgba(66, 165, 245, 0.15);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.15);
         }
 
         .chat-body .typing {
@@ -1123,7 +1185,7 @@
             border-top: 1px solid rgba(66, 165, 245, 0.06);
             display: flex;
             gap: 10px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .chat-footer input {
@@ -1145,7 +1207,7 @@
 
         .chat-footer input:focus {
             border-color: #42a5f5;
-            box-shadow: 0 0 20px rgba(66, 165, 245, 0.05);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.05);
         }
 
         .chat-footer button {
@@ -1158,13 +1220,13 @@
             cursor: pointer;
             transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
             font-family: 'Space Grotesk', sans-serif;
-            box-shadow: 0 0 20px rgba(66, 165, 245, 0.1);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.1);
         }
 
         .chat-footer button:hover {
             opacity: 0.85;
             transform: scale(1.04);
-            box-shadow: 0 0 30px rgba(66, 165, 245, 0.2);
+            box-shadow: 0 0 40px rgba(66, 165, 245, 0.2);
         }
 
         /* ---------- RESPONSIVE ---------- */
@@ -1418,9 +1480,9 @@
                     </div>
                 </div>
 
-                <div style="text-align:center; margin-top:20px; padding:16px; background:rgba(66,165,245,0.04); border-radius:16px; border:1px solid rgba(66,165,245,0.06);">
+                <div style="text-align:center; margin-top:20px; padding:16px; background:rgba(66,165,245,0.04); border-radius:16px; border:1px solid rgba(66,165,245,0.06); backdrop-filter:blur(4px); box-shadow:0 0 30px rgba(66,165,245,0.02);">
                     <p style="color:#8aa0c0; font-size:0.95rem;">
-                        <i class="fas fa-lightbulb" style="color:#42a5f5; margin-right:10px;"></i>
+                        <i class="fas fa-lightbulb" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 12px #42a5f544);"></i>
                         Contar con un soporte TI profesional no es un gasto, es una inversión en continuidad y crecimiento.
                     </p>
                 </div>
@@ -1570,7 +1632,7 @@
                 </div>
 
                 <div style="margin-top:24px; text-align:center; color:#6a809a; font-size:0.9rem;">
-                    <i class="fas fa-info-circle" style="color:#42a5f5; margin-right:8px;"></i>
+                    <i class="fas fa-info-circle" style="color:#42a5f5; margin-right:8px; filter:drop-shadow(0 0 8px #42a5f544);"></i>
                     Los precios están expresados en pesos chilenos (CLP) y no incluyen IVA. Consulte por cotizaciones personalizadas.
                 </div>
             </div>
@@ -1766,28 +1828,28 @@
 
                 <!-- Bloque visual adicional: Mantenimiento Preventivo + Procedimientos -->
                 <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                    <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:28px 24px; border:1px solid rgba(66,165,245,0.06);">
+                    <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:28px 24px; border:1px solid rgba(66,165,245,0.06); backdrop-filter:blur(4px); box-shadow:0 0 30px rgba(0,0,0,0.3);">
                         <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px;">
-                            <i class="fas fa-fan" style="font-size:2.2rem; color:#42a5f5;"></i>
+                            <i class="fas fa-fan" style="font-size:2.2rem; color:#42a5f5; filter:drop-shadow(0 0 12px #42a5f544);"></i>
                             <h3 style="font-size:1.2rem; font-weight:600;">Mantenimiento Preventivo</h3>
                         </div>
                         <ul style="list-style:none; color:#8aa0c0; font-size:0.95rem;">
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Limpieza de ventiladores y disipadores</li>
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Revisión de discos duros y estado de SSD</li>
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Actualización de drivers y sistema operativo</li>
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Optimización de rendimiento</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Limpieza de ventiladores y disipadores</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Revisión de discos duros y estado de SSD</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Actualización de drivers y sistema operativo</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Optimización de rendimiento</li>
                         </ul>
                     </div>
-                    <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:28px 24px; border:1px solid rgba(66,165,245,0.06);">
+                    <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:28px 24px; border:1px solid rgba(66,165,245,0.06); backdrop-filter:blur(4px); box-shadow:0 0 30px rgba(0,0,0,0.3);">
                         <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px;">
-                            <i class="fas fa-clipboard-check" style="font-size:2.2rem; color:#42a5f5;"></i>
+                            <i class="fas fa-clipboard-check" style="font-size:2.2rem; color:#42a5f5; filter:drop-shadow(0 0 12px #42a5f544);"></i>
                             <h3 style="font-size:1.2rem; font-weight:600;">Procedimientos y Protocolos</h3>
                         </div>
                         <ul style="list-style:none; color:#8aa0c0; font-size:0.95rem;">
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Políticas de seguridad y acceso</li>
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Plan de contingencia y recuperación</li>
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Gestión de actualizaciones y parches</li>
-                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px;"></i>Auditoría de seguridad anual</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Políticas de seguridad y acceso</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Plan de contingencia y recuperación</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Gestión de actualizaciones y parches</li>
+                            <li style="padding:4px 0;"><i class="fas fa-check-circle" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 6px #42a5f544);"></i>Auditoría de seguridad anual</li>
                         </ul>
                     </div>
                 </div>
@@ -1830,7 +1892,7 @@
                     </div>
 
                     <div class="hours-box">
-                        <h4><i class="far fa-clock" style="color:#42a5f5; margin-right:10px;"></i> Horario de atención</h4>
+                        <h4><i class="far fa-clock" style="color:#42a5f5; margin-right:10px; filter:drop-shadow(0 0 8px #42a5f544);"></i> Horario de atención</h4>
                         <div class="day">
                             <span>Lunes a Viernes</span>
                             <span class="time">10:00 – 20:00</span>
@@ -1926,7 +1988,7 @@
         });
 
         // ============================================================
-        // CHAT BOT CON CONTEXTO (incluye precios y pagos)
+        // CHAT BOT CON CONTEXTO
         // ============================================================
         const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
