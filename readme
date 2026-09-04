@@ -1,0 +1,39 @@
+# Anjeig Soporte TI
+
+Página web corporativa dinámica y moderna para la empresa **Anjeig**, especializada en servicios de soporte informático (TI), asesorías, protocolos de seguridad y mantenimiento preventivo.
+
+# Características Principales
+
+- **Diseño Moderno:** Interfaz oscura con acentos en azul cian y púrpura, tipografía *Space Grotesk* y efectos de brillo (glassmorphism).
+- **Animaciones Integradas:** Gráficos animados (GIF) de servidores y redes isométricas en las secciones principales (Hero e Importancia) con efectos de flotación.
+- **Pantalla de Carga (Splash):** Transición de bienvenida con el logo y un spinner animado.
+- **Asistente Virtual (Chatbot):** Bot de chat interactivo con lógica contextual capaz de responder sobre **servicios, precios, medios de pago, protocolos, soporte, horarios y contacto**.
+- **Tabla de Precios Dinámica:** Listado detallado de servicios con rangos de precios en CLP, actualizable fácilmente desde el código.
+- **Modal de Pagos:** Ventana emergente (modal) con información detallada sobre los métodos de pago (WebPay, Transferencia, Efectivo, Mercado Pago, PayPal).
+- **Diseño Responsive:** Optimizado para verse perfecto en escritorio, tablets y móviles.
+
+# Tecnologías Utilizadas
+
+- **HTML5**
+- **CSS3** (Animaciones nativas, Grid y Flexbox)
+- **JavaScript (Vanilla)**
+- **Font Awesome 6** (Iconos)
+- **Google Fonts** (Space Grotesk)
+
+# Instalación y Uso
+
+1. Descarga o clona este repositorio.
+2. Guarda el archivo principal como `index.html`.
+3. Ábrelo en cualquier navegador web moderno (Chrome, Edge, Firefox, Safari).
+4. **No requiere instalación ni servidor**, funciona como un archivo estático.
+
+# Estructura del Proyecto
+
+El proyecto consta de un único archivo `index.html` que contiene todo el código HTML, CSS y JavaScript integrado para facilitar su implementación y mantenimiento.
+
+# Recursos y Personalización
+
+- **GIFs:** Las animaciones de servidores y redes provienen de Giphy (URLs directas en el código). Puedes reemplazarlas por las tuyas cambiando el atributo `src` de las etiquetas `<img>`.
+- **Colores:** Los colores principales se basan en tonos neón (`#42a5f5`, `#7c4dff` y `#ff6b35`), los cuales puedes modificar en las variables CSS al inicio del archivo.
+
+![alt text](image.png)
