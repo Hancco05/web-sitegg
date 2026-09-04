@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anjeig · Soporte TI — Dinámico</title>
 
-    <!-- Google Fonts: Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- Librería para animaciones isométricas (Lottie) -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js"></script>
 
     <style>
-        /* ---------- RESET & BASE ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -44,7 +40,6 @@
             padding: 0 24px;
         }
 
-        /* ---------- SPLASH OVERLAY ---------- */
         #splash {
             position: fixed;
             top: 0;
@@ -99,7 +94,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ---------- MAIN CONTENT ---------- */
         .main-content {
             opacity: 0;
             animation: fadeIn 0.8s ease forwards;
@@ -110,7 +104,6 @@
             to { opacity: 1; }
         }
 
-        /* ---------- NAVBAR ---------- */
         .navbar {
             position: fixed;
             top: 0;
@@ -197,7 +190,6 @@
             color: #fff !important;
         }
 
-        /* ---------- HERO ---------- */
         .hero {
             padding: 140px 0 60px;
             background:
@@ -353,7 +345,6 @@
             box-shadow: 0 0 30px rgba(66, 165, 245, 0.05);
         }
 
-        /* ---------- ANIMACIÓN ISOMÉTRICA DEL HERO ---------- */
         .hero-animation {
             display: flex;
             justify-content: center;
@@ -374,7 +365,6 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* ---------- TARJETAS ANIMADAS (ESTADÍSTICAS) ---------- */
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -476,7 +466,6 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* ---------- SECTION TITLES ---------- */
         .section {
             padding: 70px 0;
             border-bottom: 1px solid rgba(66, 165, 245, 0.04);
@@ -518,7 +507,6 @@
             max-width: 640px;
         }
 
-        /* ---------- IMPORTANCIA TI (con animación Lottie) ---------- */
         .ti-importance {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -526,7 +514,6 @@
             margin: 30px 0 20px;
         }
 
-        /* Bloque principal de Importancia */
         .ti-main-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -600,7 +587,6 @@
             filter: drop-shadow(0 0 6px #42a5f544);
         }
 
-        /* ---------- SERVICIOS DESTACADOS ---------- */
         .services-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -795,7 +781,6 @@
             box-shadow: 0 0 30px rgba(66, 165, 245, 0.05);
         }
 
-        /* ---------- MODAL PAGOS ---------- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -905,7 +890,6 @@
             color: #8aa0c0;
         }
 
-        /* ---------- PROTOCOLOS ---------- */
         .protocol-block {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 24px;
@@ -983,7 +967,6 @@
             color: #8aa0c0;
         }
 
-        /* ---------- SOPORTE Y RESPALDOS ---------- */
         .support-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1024,7 +1007,6 @@
             color: #8aa0c0;
         }
 
-        /* ---------- CONTACT ---------- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1123,7 +1105,6 @@
             text-shadow: 0 0 16px rgba(66, 165, 245, 0.2);
         }
 
-        /* ---------- CHAT BOT ---------- */
         .chat-btn {
             position: fixed;
             bottom: 28px;
@@ -1341,7 +1322,6 @@
             box-shadow: 0 0 40px rgba(66, 165, 245, 0.2);
         }
 
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 992px) {
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -1396,7 +1376,6 @@
             .hero h1 { font-size: 2rem; }
             .hero-badges { gap: 10px 14px; }
 
-            /* Ajustes móviles para animaciones */
             dotlottie-wc {
                 width: 250px;
                 height: 250px;
@@ -1428,16 +1407,13 @@
 </head>
 <body>
 
-    <!-- ========== SPLASH OVERLAY ========== -->
     <div id="splash">
         <h1>Anjeig</h1>
         <div class="loader"></div>
     </div>
 
-    <!-- ========== MAIN CONTENT ========== -->
     <div class="main-content" id="mainContent">
 
-        <!-- ========== NAVBAR ========== -->
         <nav class="navbar">
             <div class="container">
                 <a href="#" class="logo">
@@ -1456,7 +1432,6 @@
             </div>
         </nav>
 
-        <!-- ========== HERO ========== -->
         <section class="hero" id="inicio">
             <div class="container">
                 <div class="hero-grid">
@@ -1486,9 +1461,7 @@
                         </div>
                     </div>
                     
-                    <!-- REEMPLAZADO: Animación Isométrica Lottie en el Hero -->
                     <div class="hero-animation">
-                        <!-- Cambia el src por tu animación Lottie de informática favorita -->
                         <dotlottie-wc 
                             src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie" 
                             autoplay 
@@ -1497,7 +1470,6 @@
                     </div>
                 </div>
                 
-                <!-- Tarjetas animadas estándar (ahora debajo del hero completo) -->
                 <div class="hero-stats">
                     <div class="stat-card">
                         <div class="icon-wrap"><i class="fas fa-headset"></i></div>
@@ -1518,7 +1490,6 @@
             </div>
         </section>
 
-        <!-- ========== SERVICIOS DESTACADOS ========== -->
         <section class="section" id="servicios">
             <div class="container">
                 <div class="section-label">Nuestros servicios</div>
@@ -1528,7 +1499,6 @@
                 </p>
 
                 <div class="services-showcase">
-                    <!-- Visitas a Terreno -->
                     <div class="service-showcase-card">
                         <div class="icon-wrapper"><i class="fas fa-hard-hat"></i></div>
                         <h3>Visitas a Terreno</h3>
@@ -1536,7 +1506,6 @@
                         <span class="tag">Presencial</span>
                     </div>
 
-                    <!-- Asesorías -->
                     <div class="service-showcase-card">
                         <div class="icon-wrapper"><i class="fas fa-user-tie"></i></div>
                         <h3>Asesorías</h3>
@@ -1544,7 +1513,6 @@
                         <span class="tag">Presencial / Remoto</span>
                     </div>
 
-                    <!-- Procedimientos y Protocolos -->
                     <div class="service-showcase-card">
                         <div class="icon-wrapper"><i class="fas fa-clipboard-list"></i></div>
                         <h3>Procedimientos y Protocolos</h3>
@@ -1552,7 +1520,6 @@
                         <span class="tag">Estandarización</span>
                     </div>
 
-                    <!-- Soporte Telefónico y Chat -->
                     <div class="service-showcase-card">
                         <div class="icon-wrapper"><i class="fas fa-headset"></i></div>
                         <h3>Soporte Telefónico y Chat</h3>
@@ -1560,7 +1527,6 @@
                         <span class="tag">24/7</span>
                     </div>
 
-                    <!-- Respaldos Incluidos -->
                     <div class="service-showcase-card">
                         <div class="icon-wrapper"><i class="fas fa-database"></i></div>
                         <h3>Respaldos Incluidos</h3>
@@ -1568,7 +1534,6 @@
                         <span class="tag">Protección</span>
                     </div>
 
-                    <!-- Mantenimiento Preventivo -->
                     <div class="service-showcase-card">
                         <div class="icon-wrapper"><i class="fas fa-tools"></i></div>
                         <h3>Mantenimiento Preventivo</h3>
@@ -1579,7 +1544,6 @@
             </div>
         </section>
 
-        <!-- ========== PRECIOS (TABLA) ========== -->
         <section class="section" id="precios">
             <div class="container">
                 <div class="section-label">Tarifas claras</div>
@@ -1667,7 +1631,6 @@
             </div>
         </section>
 
-        <!-- ========== MEDIOS DE PAGO ========== -->
         <section class="section" id="pagos">
             <div class="container">
                 <div class="section-label">Formas de pago</div>
@@ -1712,7 +1675,6 @@
             </div>
         </section>
 
-        <!-- ========== MODAL PAGOS ========== -->
         <div class="modal-overlay" id="paymentModal">
             <div class="modal-content">
                 <button class="close-modal" id="closePaymentModal"><i class="fas fa-times"></i></button>
@@ -1761,7 +1723,6 @@
             </div>
         </div>
 
-        <!-- ========== PROCEDIMIENTOS Y PROTOCOLOS ========== -->
         <section class="section" id="protocolos">
             <div class="container">
                 <div class="section-label">Estandarización y seguridad</div>
@@ -1803,7 +1764,6 @@
             </div>
         </section>
 
-        <!-- ========== SOPORTE Y RESPALDOS ========== -->
         <section class="section" id="soporte">
             <div class="container">
                 <div class="section-label">Cobertura continua</div>
@@ -1864,7 +1824,6 @@
             </div>
         </section>
 
-        <!-- ========== CONTACTO ========== -->
         <section class="section" id="contacto">
             <div class="container">
                 <div class="section-label">Contacto</div>
@@ -1935,9 +1894,6 @@
         </section>
 
     </div>
-    <!-- /main-content -->
-
-    <!-- ========== CHAT BOT ========== -->
     <button class="chat-btn" id="chatToggle" aria-label="Abrir asistente">
         <i class="fas fa-robot"></i>
         <span>Asistente Anjeig</span>
@@ -1964,19 +1920,12 @@
     </div>
 
     <script>
-        // ============================================================
-        // SPLASH SCREEN
-        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const splash = document.getElementById('splash');
             setTimeout(function() {
                 splash.classList.add('hidden');
             }, 2500);
         });
-
-        // ============================================================
-        // MODAL PAGOS
-        // ============================================================
         const modal = document.getElementById('paymentModal');
         const openBtn = document.getElementById('openPaymentModal');
         const closeBtn = document.getElementById('closePaymentModal');
@@ -1995,9 +1944,6 @@
             }
         });
 
-        // ============================================================
-        // CHAT BOT CON CONTEXTO
-        // ============================================================
         const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
         const chatClose = document.getElementById('chatClose');
