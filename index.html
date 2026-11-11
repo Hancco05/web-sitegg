@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anjeig Soporte TI — Dinámico</title>
+    <title>Anjeig IT — Soporte TI</title>
+
+    <!-- FAVICON (Logo del microchip en la pestaña) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%2342a5f5' d='M416 128H96c-17.7 0-32 14.3-32 32v192c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32zm-96 192H192V192h128v128zm80-32h-32v-32h32v32zm0-64h-32v-32h32v32zm-288 64h-32v-32h32v32zm0-64h-32v-32h32v32zm288-128h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm288 352h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32z'/%3E%3C/svg%3E" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -927,7 +930,7 @@
             color: #8aa0c0;
         }
 
-        /* ---------- NUEVA SECCIÓN: CALIDAD Y CUMPLIMIENTO ---------- */
+        /* ---------- CALIDAD Y CUMPLIMIENTO ---------- */
         .compliance-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1330,6 +1333,53 @@
             opacity: 0.85;
             transform: scale(1.04);
             box-shadow: 0 0 40px rgba(66, 165, 245, 0.2);
+        }
+
+        /* ---------- MODAL DE OPCIONES DE CORREO ---------- */
+        .mail-options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .mail-option-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(66, 165, 245, 0.1);
+            padding: 16px;
+            border-radius: 16px;
+            color: #e0e8f0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .mail-option-btn:hover {
+            background: rgba(66, 165, 245, 0.08);
+            border-color: rgba(66, 165, 245, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(66, 165, 245, 0.1);
+        }
+
+        .mail-option-btn i {
+            font-size: 1.8rem;
+            width: 32px;
+            text-align: center;
+        }
+
+        .mail-option-btn.gmail i { color: #EA4335; }
+        .mail-option-btn.outlook i { color: #0078D4; }
+        .mail-option-btn.yahoo i { color: #6001D2; }
+        .mail-option-btn.default i { color: #42a5f5; }
+
+        @media (max-width: 480px) {
+            .mail-options-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 992px) {
@@ -1882,16 +1932,44 @@
                             <span class="time" style="color: #f06292;">Cerrado</span>
                         </div>
 
+                        <!-- BOTÓN ACTUALIZADO QUE ABRE EL MODAL DE OPCIONES -->
                         <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(66,165,245,0.06);">
-                            <a href="mailto:s.carmonawright@gmail.com?subject=Consulta%20desde%20Anjeig%20IT&body=Hola,%20quiero%20solicitar%20información%20sobre..." class="btn-primary" style="width:100%; justify-content:center;">
-                                <i class="fas fa-paper-plane"></i> Enviar correo
-                            </a>
+                            <button class="btn-primary" id="openMailModal" style="width:100%; justify-content:center;">
+                                <i class="fas fa-envelope-open-text"></i> Enviar correo
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    
+    <!-- ========================================== -->
+    <!-- MODAL DE SELECCIÓN DE CORREO               -->
+    <!-- ========================================== -->
+    <div class="modal-overlay" id="mailModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeMailModal"><i class="fas fa-times"></i></button>
+            <h2>¿Dónde desea <span class="highlight">escribirnos?</span></h2>
+            <p class="modal-sub">Elija su proveedor de correo para abrir su bandeja de salida automáticamente.</p>
+            
+            <div class="mail-options-grid">
+                <button class="mail-option-btn gmail" onclick="abrirCorreo('gmail')">
+                    <i class="fab fa-google"></i> Gmail
+                </button>
+                <button class="mail-option-btn outlook" onclick="abrirCorreo('outlook')">
+                    <i class="fab fa-microsoft"></i> Outlook
+                </button>
+                <button class="mail-option-btn yahoo" onclick="abrirCorreo('yahoo')">
+                    <i class="fab fa-yahoo"></i> Yahoo Mail
+                </button>
+                <button class="mail-option-btn default" onclick="abrirCorreo('default')">
+                    <i class="fas fa-envelope"></i> Otro / Predeterminado
+                </button>
+            </div>
+        </div>
+    </div>
+
     <button class="chat-btn" id="chatToggle" aria-label="Abrir asistente">
         <i class="fas fa-robot"></i>
         <span>Asistente Anjeig</span>
@@ -1918,12 +1996,15 @@
     </div>
 
     <script>
+        // Splash Screen
         document.addEventListener('DOMContentLoaded', function() {
             const splash = document.getElementById('splash');
             setTimeout(function() {
                 splash.classList.add('hidden');
             }, 2500);
         });
+
+        // Modal Pagos
         const modal = document.getElementById('paymentModal');
         const openBtn = document.getElementById('openPaymentModal');
         const closeBtn = document.getElementById('closePaymentModal');
@@ -1942,6 +2023,64 @@
             }
         });
 
+        // -----------------------------------------
+        // Lógica del Modal de Correos
+        // -----------------------------------------
+        const mailModal = document.getElementById('mailModal');
+        const openMailModalBtn = document.getElementById('openMailModal');
+        const closeMailModalBtn = document.getElementById('closeMailModal');
+
+        openMailModalBtn.addEventListener('click', () => {
+            mailModal.classList.add('active');
+        });
+
+        closeMailModalBtn.addEventListener('click', () => {
+            mailModal.classList.remove('active');
+        });
+
+        mailModal.addEventListener('click', (e) => {
+            if (e.target === mailModal) {
+                mailModal.classList.remove('active');
+            }
+        });
+
+        // Función para abrir los distintos correos
+        function abrirCorreo(proveedor) {
+            const emailDestino = 's.carmonawright@gmail.com';
+            const asunto = encodeURIComponent('Consulta desde Anjeig IT');
+            const cuerpo = encodeURIComponent('Hola equipo de Anjeig IT,\n\nMe gustaría solicitar información sobre...\n\nSaludos,');
+            
+            let url = '';
+
+            switch(proveedor) {
+                case 'gmail':
+                    url = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailDestino}&su=${asunto}&body=${cuerpo}`;
+                    break;
+                case 'outlook':
+                    url = `https://outlook.live.com/mail/0/deeplink/compose?to=${emailDestino}&subject=${asunto}&body=${cuerpo}`;
+                    break;
+                case 'yahoo':
+                    url = `https://compose.mail.yahoo.com/?to=${emailDestino}&subj=${asunto}&body=${cuerpo}`;
+                    break;
+                case 'default':
+                default:
+                    // mailto abre la app predeterminada del sistema
+                    url = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
+                    break;
+            }
+
+            // Abrir en una pestaña nueva (o en la app en caso de mailto)
+            if(proveedor === 'default') {
+                window.location.href = url;
+            } else {
+                window.open(url, '_blank');
+            }
+
+            // Cerrar el modal después de hacer clic
+            mailModal.classList.remove('active');
+        }
+
+        // Lógica del Chatbot
         const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
         const chatClose = document.getElementById('chatClose');
