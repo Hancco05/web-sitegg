@@ -507,86 +507,6 @@
             max-width: 640px;
         }
 
-        .ti-importance {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0 20px;
-        }
-
-        .ti-main-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .ti-main-wrapper .ti-animation {
-            display: flex;
-            justify-content: center;
-        }
-
-        .ti-main-wrapper dotlottie-wc {
-            width: 350px;
-            height: 350px;
-            filter: drop-shadow(0 20px 30px rgba(66, 165, 245, 0.2));
-            animation: flotar 4s ease-in-out infinite;
-        }
-
-        .ti-block {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 28px 24px;
-            border: 1px solid rgba(66, 165, 245, 0.06);
-            transition: border-color 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(4px);
-        }
-
-        .ti-block:hover {
-            border-color: rgba(66, 165, 245, 0.2);
-            box-shadow: 0 0 40px rgba(66, 165, 245, 0.05);
-        }
-
-        .ti-block h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ti-block h3 i {
-            color: #42a5f5;
-            filter: drop-shadow(0 0 8px #42a5f566);
-        }
-
-        .ti-block p {
-            font-size: 0.95rem;
-            color: #b0c8e0;
-            margin-bottom: 10px;
-        }
-
-        .ti-block ul {
-            list-style: none;
-            font-size: 0.9rem;
-            color: #8aa0c0;
-        }
-
-        .ti-block ul li {
-            padding: 4px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ti-block ul li i {
-            color: #42a5f5;
-            width: 18px;
-            filter: drop-shadow(0 0 6px #42a5f544);
-        }
-
         .services-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1007,6 +927,96 @@
             color: #8aa0c0;
         }
 
+        /* ---------- NUEVA SECCIÓN: CALIDAD Y CUMPLIMIENTO ---------- */
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .compliance-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 40px 30px;
+            border: 1px solid rgba(66, 165, 245, 0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compliance-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(66, 165, 245, 0.05) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .compliance-card:hover::before {
+            opacity: 1;
+        }
+
+        .compliance-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(66, 165, 245, 0.25);
+            box-shadow: 0 0 60px rgba(66, 165, 245, 0.08);
+        }
+
+        .compliance-icon-wrap {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(66, 165, 245, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            color: #42a5f5;
+            border: 2px solid rgba(66, 165, 245, 0.15);
+            box-shadow: 0 0 30px rgba(66, 165, 245, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .compliance-card:hover .compliance-icon-wrap {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(66, 165, 245, 0.25);
+        }
+
+        .compliance-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f0f4ff;
+        }
+
+        .compliance-card p {
+            font-size: 0.95rem;
+            color: #8aa0c0;
+            line-height: 1.5;
+        }
+
+        .compliance-tag {
+            display: inline-block;
+            margin-top: 16px;
+            background: rgba(66, 165, 245, 0.1);
+            color: #64b5f6;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(66, 165, 245, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1323,73 +1333,31 @@
         }
 
         @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero h1 { font-size: 2.6rem; }
             .hero p { max-width: 100%; }
-
-            /* Ajustar animaciones en tablets */
-            .hero-animation {
-                order: -1; /* Mover animación arriba en tablets */
-                margin-bottom: 20px;
-            }
-
-            dotlottie-wc {
-                width: 300px;
-                height: 300px;
-            }
-
-            .ti-main-wrapper {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .ti-main-wrapper .ti-animation { order: -1; }
-            .ti-main-wrapper dotlottie-wc {
-                width: 250px;
-                height: 250px;
-            }
-
+            .hero-animation { order: -1; margin-bottom: 20px; }
+            dotlottie-wc { width: 300px; height: 300px; }
+            .ti-main-wrapper { grid-template-columns: 1fr; gap: 20px; }
             .contact-grid { grid-template-columns: 1fr; gap: 30px; }
             .section-title { font-size: 2rem; }
-            .ti-importance { grid-template-columns: 1fr; }
             .protocol-block { grid-template-columns: 1fr; }
+            .compliance-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         }
 
         @media (max-width: 768px) {
-            .navbar .container {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 14px 18px;
-                font-size: 0.85rem;
-            }
-
+            .navbar .container { flex-direction: column; gap: 12px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 14px 18px; font-size: 0.85rem; }
             .hero { padding: 170px 0 50px; }
             .hero h1 { font-size: 2rem; }
             .hero-badges { gap: 10px 14px; }
-
-            dotlottie-wc {
-                width: 250px;
-                height: 250px;
-            }
-            .ti-main-wrapper dotlottie-wc {
-                width: 200px;
-                height: 200px;
-            }
-
+            dotlottie-wc { width: 250px; height: 250px; }
             .services-showcase { grid-template-columns: 1fr 1fr; }
             .support-grid { grid-template-columns: 1fr 1fr; }
             .protocol-block .icon-grid { grid-template-columns: 1fr 1fr; }
             .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 90px; }
             .payment-methods-grid { grid-template-columns: 1fr 1fr; }
+            .compliance-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 480px) {
@@ -1426,6 +1394,7 @@
                     <li><a href="#pagos">Pagos</a></li>
                     <li><a href="#protocolos">Protocolos</a></li>
                     <li><a href="#soporte">Soporte</a></li>
+                    <li><a href="#calidad">Calidad</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                     <li><a href="#contacto" class="nav-cta"><i class="fas fa-paper-plane"></i> Cotizar</a></li>
                 </ul>
@@ -1818,6 +1787,52 @@
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- NUEVA SECCIÓN: CALIDAD Y CUMPLIMIENTO NORMATIVO -->
+        <!-- ========================================== -->
+        <section class="section" id="calidad">
+            <div class="container">
+                <div class="section-label">Estándares y Normativas</div>
+                <h2 class="section-title">Calidad y <span class="highlight">Cumplimiento</span></h2>
+                <p class="section-sub">
+                    Nuestros procesos están alineados con estándares internacionales y la normativa legal vigente en Chile, garantizando un servicio seguro, confiable y transparente.
+                </p>
+
+                <div class="compliance-grid">
+                    <!-- ISO 9001 -->
+                    <div class="compliance-card">
+                        <div class="compliance-icon-wrap">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3>Gestión de Calidad</h3>
+                        <p>Nuestros procesos operativos y de soporte siguen el marco de gestión de calidad de <strong>ISO 9001</strong>, asegurando trazabilidad, satisfacción del cliente y mejora continua en cada servicio técnico.</p>
+                        <span class="compliance-tag">Basado en ISO 9001</span>
+                    </div>
+
+                    <!-- ISO 14001 -->
+                    <div class="compliance-card">
+                        <div class="compliance-icon-wrap">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Compromiso Ambiental</h3>
+                        <p>En el recambio de equipos y gestión de residuos electrónicos, aplicamos prácticas alineadas a <strong>ISO 14001</strong>, promoviendo el reciclaje de hardware y la eficiencia energética de su empresa.</p>
+                        <span class="compliance-tag">Referencia ISO 14001</span>
+                    </div>
+
+                    <!-- LEY 21.719 -->
+                    <div class="compliance-card">
+                        <div class="compliance-icon-wrap">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3>Protección de Datos</h3>
+                        <p>Implementamos las medidas requeridas por la <strong>Ley 21.719</strong> de Protección de Datos Personales en Chile. Sus datos y los de su empresa son tratados de forma lícita, segura y confidencial.</p>
+                        <span class="compliance-tag">Cumplimiento Ley 21.719</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========================================== -->
+
         <section class="section" id="contacto">
             <div class="container">
                 <div class="section-label">Contacto</div>
@@ -1954,7 +1969,8 @@
                 'Limpieza / Mantención': 'Desde $20.000 hasta $35.000 (Taller)',
                 'Instalación Software': 'Desde $15.000 hasta $25.000 (Remoto)'
             },
-            pagos: ['WebPay', 'Transferencia bancaria', 'Efectivo', 'Mercado Pago', 'PayPal']
+            pagos: ['WebPay', 'Transferencia bancaria', 'Efectivo', 'Mercado Pago', 'PayPal'],
+            calidad: 'Nuestros procesos se basan en ISO 9001 (Calidad), tenemos un compromiso ambiental basado en ISO 14001, y cumplimos estrictamente con la Ley 21.719 de Protección de Datos Personales en Chile.'
         };
 
         function getBotResponse(userMessage) {
@@ -1971,6 +1987,7 @@
             else if (msg.includes('empresa') || msg.includes('hogar') || msg.includes('importancia') || msg.includes('por qué')) topic = 'importancia';
             else if (msg.includes('precio') || msg.includes('costo') || msg.includes('tarifa') || msg.includes('cuánto') || msg.includes('valor')) topic = 'precios';
             else if (msg.includes('pago') || msg.includes('pagar') || msg.includes('webpay') || msg.includes('transferencia') || msg.includes('efectivo') || msg.includes('mercadopago') || msg.includes('paypal')) topic = 'pagos';
+            else if (msg.includes('calidad') || msg.includes('iso') || msg.includes('ley') || msg.includes('21.719') || msg.includes('ambiental')) topic = 'calidad';
 
             if (!topic && lastTopic) topic = lastTopic;
             if (topic) lastTopic = topic;
@@ -2017,8 +2034,11 @@
                 case 'pagos':
                     response = `Aceptamos: ${knowledge.pagos.join(', ')}. Puedes ver más detalles en la sección de pagos o preguntarme por uno en específico.`;
                     break;
+                case 'calidad':
+                    response = knowledge.calidad;
+                    break;
                 default:
-                    response = `Puedo ayudarte con información sobre servicios (${knowledge.servicios.join(', ')}), protocolos, soporte, contacto, horarios, precios, medios de pago o la importancia de la TI. ¿Qué deseas saber?`;
+                    response = `Puedo ayudarte con información sobre servicios (${knowledge.servicios.join(', ')}), protocolos, soporte, contacto, horarios, precios, medios de pago, estándares de calidad o la importancia de la TI. ¿Qué deseas saber?`;
                     break;
             }
 
@@ -2097,7 +2117,7 @@
             }
         });
 
-        console.log('🤖 Asistente Anjeig con precios y pagos actualizados.');
+        console.log('🤖 Asistente Anjeig con precios, pagos y normativas.');
     </script>
 
 </body>
