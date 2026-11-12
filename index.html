@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anjeig IT — Soporte TI</title>
+    <title>Anjeig TI — Soporte TI</title>
 
     <!-- FAVICON (Logo del microchip en la pestaña) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%2342a5f5' d='M416 128H96c-17.7 0-32 14.3-32 32v192c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32zm-96 192H192V192h128v128zm80-32h-32v-32h32v32zm0-64h-32v-32h32v32zm-288 64h-32v-32h32v32zm0-64h-32v-32h32v32zm288-128h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm288 352h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32z'/%3E%3C/svg%3E" />
@@ -930,7 +930,6 @@
             color: #8aa0c0;
         }
 
-        /* ---------- CALIDAD Y CUMPLIMIENTO ---------- */
         .compliance-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1335,7 +1334,6 @@
             box-shadow: 0 0 40px rgba(66, 165, 245, 0.2);
         }
 
-        /* ---------- MODAL DE OPCIONES DE CORREO ---------- */
         .mail-options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1836,10 +1834,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- ========================================== -->
-        <!-- NUEVA SECCIÓN: CALIDAD Y CUMPLIMIENTO NORMATIVO -->
-        <!-- ========================================== -->
         <section class="section" id="calidad">
             <div class="container">
                 <div class="section-label">Estándares y Normativas</div>
@@ -1849,7 +1843,6 @@
                 </p>
 
                 <div class="compliance-grid">
-                    <!-- ISO 9001 -->
                     <div class="compliance-card">
                         <div class="compliance-icon-wrap">
                             <i class="fas fa-medal"></i>
@@ -1859,7 +1852,6 @@
                         <span class="compliance-tag">Basado en ISO 9001</span>
                     </div>
 
-                    <!-- ISO 14001 -->
                     <div class="compliance-card">
                         <div class="compliance-icon-wrap">
                             <i class="fas fa-leaf"></i>
@@ -1881,7 +1873,6 @@
                 </div>
             </div>
         </section>
-        <!-- ========================================== -->
 
         <section class="section" id="contacto">
             <div class="container">
@@ -2047,8 +2038,8 @@
         // Función para abrir los distintos correos
         function abrirCorreo(proveedor) {
             const emailDestino = 's.carmonawright@gmail.com';
-            const asunto = encodeURIComponent('Consulta desde Anjeig IT');
-            const cuerpo = encodeURIComponent('Hola equipo de Anjeig IT,\n\nMe gustaría solicitar información sobre...\n\nSaludos,');
+            const asunto = encodeURIComponent('Consulta desde Anjeig TI');
+            const cuerpo = encodeURIComponent('Hola equipo de Anjeig TI,\n\nMe gustaría solicitar información sobre...\n\nSaludos,');
             
             let url = '';
 
