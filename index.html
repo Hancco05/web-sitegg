@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Anjeig TI — Soporte TI</title>
 
-    <!-- FAVICON (Logo del microchip en la pestaña) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%2342a5f5' d='M416 128H96c-17.7 0-32 14.3-32 32v192c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32zm-96 192H192V192h128v128zm80-32h-32v-32h32v32zm0-64h-32v-32h32v32zm-288 64h-32v-32h32v32zm0-64h-32v-32h32v32zm288-128h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm-64 0h-32V64h32v32zm288 352h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32zm-64 0h-32v-32h32v32z'/%3E%3C/svg%3E" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +44,6 @@
             padding: 0 24px;
         }
 
-        /* ---------- FONDO ANIMADO ---------- */
         #bgCanvas {
             position: fixed;
             top: 0;
@@ -557,7 +555,6 @@
             box-shadow: 0 0 12px rgba(66, 165, 245, 0.05);
         }
 
-        /* ---------- PRECIOS (TABLA) ---------- */
         .pricing-wrap {
             overflow-x: auto;
             margin-top: 32px;
@@ -613,7 +610,6 @@
             background: rgba(66, 165, 245, 0.02);
         }
 
-        /* ---------- MEDIOS DE PAGO ---------- */
         .payment-methods-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1401,8 +1397,6 @@
     </style>
 </head>
 <body>
-
-    <!-- FONDO ANIMADO -->
     <canvas id="bgCanvas"></canvas>
 
     <div id="splash">
@@ -1843,7 +1837,6 @@
                         <span class="compliance-tag">Referencia ISO 14001</span>
                     </div>
 
-                    <!-- LEY 21.719 -->
                     <div class="compliance-card">
                         <div class="compliance-icon-wrap">
                             <i class="fas fa-user-shield"></i>
@@ -1905,7 +1898,6 @@
                             <span class="time" style="color: #f06292;">Cerrado</span>
                         </div>
 
-                        <!-- BOTÓN ACTUALIZADO QUE ABRE EL MODAL DE OPCIONES -->
                         <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(66,165,245,0.06);">
                             <button class="btn-primary" id="openMailModal" style="width:100%; justify-content:center;">
                                 <i class="fas fa-envelope-open-text"></i> Enviar correo
@@ -1917,9 +1909,6 @@
         </section>
     </div>
     
-    <!-- ========================================== -->
-    <!-- MODAL DE SELECCIÓN DE CORREO               -->
-    <!-- ========================================== -->
     <div class="modal-overlay" id="mailModal">
         <div class="modal-content">
             <button class="close-modal" id="closeMailModal"><i class="fas fa-times"></i></button>
@@ -1969,7 +1958,6 @@
     </div>
 
     <script>
-        // Splash Screen
         document.addEventListener('DOMContentLoaded', function() {
             const splash = document.getElementById('splash');
             setTimeout(function() {
@@ -1977,7 +1965,6 @@
             }, 2500);
         });
 
-        // Modal Pagos
         const modal = document.getElementById('paymentModal');
         const openBtn = document.getElementById('openPaymentModal');
         const closeBtn = document.getElementById('closePaymentModal');
@@ -1996,9 +1983,6 @@
             }
         });
 
-        // -----------------------------------------
-        // Lógica del Modal de Correos
-        // -----------------------------------------
         const mailModal = document.getElementById('mailModal');
         const openMailModalBtn = document.getElementById('openMailModal');
         const closeMailModalBtn = document.getElementById('closeMailModal');
@@ -2017,7 +2001,6 @@
             }
         });
 
-        // Función para abrir los distintos correos
         function abrirCorreo(proveedor) {
             const emailDestino = 's.carmonawright@gmail.com';
             const asunto = encodeURIComponent('Consulta desde Anjeig TI');
@@ -2037,23 +2020,19 @@
                     break;
                 case 'default':
                 default:
-                    // mailto abre la app predeterminada del sistema
                     url = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
                     break;
             }
 
-            // Abrir en una pestaña nueva (o en la app en caso de mailto)
             if(proveedor === 'default') {
                 window.location.href = url;
             } else {
                 window.open(url, '_blank');
             }
 
-            // Cerrar el modal después de hacer clic
             mailModal.classList.remove('active');
         }
 
-        // Lógica del Chatbot
         const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
         const chatClose = document.getElementById('chatClose');
@@ -2231,9 +2210,6 @@
 
         console.log('🤖 Asistente Anjeig con precios, pagos y normativas.');
 
-        // -----------------------------------------
-        // FONDO ANIMADO (Canvas)
-        // -----------------------------------------
         (function () {
             const canvas = document.getElementById('bgCanvas');
             const ctx = canvas.getContext('2d');
