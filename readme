@@ -1,4 +1,4 @@
-Anjeig Soporte TI
+--Anjeig Soporte TI
 
 Página web corporativa dinámica y moderna para la empresa Anjeig, especializada en servicios de soporte informático (TI), asesorías, protocolos de seguridad y mantenimiento preventivo.
 
@@ -27,7 +27,7 @@ Página web corporativa dinámica y moderna para la empresa Anjeig, especializad
 3. Ábrelo en cualquier navegador web moderno (Chrome, Edge, Firefox, Safari).
 4. No requiere instalación ni servidor, funciona como un archivo estático.
 
--Estructura del Proyecto
+--Estructura del Proyecto
 
 El proyecto consta de un único archivo index.html que contiene todo el código HTML, CSS y JavaScript integrado para facilitar su implementación y mantenimiento.
 
